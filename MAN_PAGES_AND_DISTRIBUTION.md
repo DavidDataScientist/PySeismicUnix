@@ -1,9 +1,5 @@
 # Man Pages and Distribution Build Instructions
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 **Date:** December 5, 2022  
 **Purpose:** Step-by-step guide for regenerating man pages and creating the distribution package
 
@@ -240,3 +236,8 @@ This ZIP file contains the entire distribution and can be shared or deployed.
 ---
 
 *Last Updated: December 16, 2025*
+
+
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
