@@ -1,17 +1,5 @@
 # PySeismicUnix - CWP/SU for Windows
 
-## License
-
-This project includes:
-- **CWP/SU** - Original CWP-SU License (Copyright © 2008, Colorado School of Mines)
-- **ZAU Enhancements** - MIT License (Copyright © 2025 ZAU.Energy Asia Limited)
-
-See [LICENSE.md](LICENSE.md) for details.
-
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Executive Summary
 
 PySeismicUnix is a comprehensive Windows port of CWP/SU (Seismic Unix), a powerful suite of seismic data processing tools. This port brings 312+ SU programs to Windows with full binary compatibility, Python integration, and modern workflow tools.
@@ -226,3 +214,12 @@ run_gui.bat
 This has been a labour of love for more than 15 years, and around 2012 I was excited to make it work under Cygwin.  Over the years I have been lucky to come up with some simple solutions to problems that I thought we intractable back then.  Thanks to COVID I had a lot of free time and this is the result.  I hope it makes you as excited as it did me!  It's finally time to share!  Cheers, *David*
 
 *For detailed information, see the documentation links above.*
+
+## License
+
+This project includes:
+- **CWP/SU** - Original CWP-SU License (Copyright © 2008, Colorado School of Mines)
+- **ZAU Enhancements** - MIT License (Copyright © 2025 ZAU.Energy Asia Limited)
+
+See [LICENSE.md](LICENSE.md) for details.
+See [LICENSE-ZAU.md](LICENSE-ZAU.md) for details.
