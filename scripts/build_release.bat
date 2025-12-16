@@ -96,7 +96,6 @@ mkdir "%DIST_DIR%\lib"
 mkdir "%DIST_DIR%\include"
 mkdir "%DIST_DIR%\doc"
 mkdir "%DIST_DIR%\samples"
-mkdir "%DIST_DIR%\gui"
 mkdir "%DIST_DIR%\man"
 
 REM Copy executables
@@ -116,8 +115,10 @@ echo   Copied headers to include\
 
 REM Copy documentation
 echo Copying documentation...
-copy "%CWPROOT_WIN%\documents\USER_GUIDE.md" "%DIST_DIR%\doc\" >nul
-copy "%CWPROOT_WIN%\documents\CHANGES.md" "%DIST_DIR%\doc\" >nul
+copy "%CWPROOT_WIN%\USER_GUIDE.md" "%DIST_DIR%\doc\" >nul 2>nul
+copy "%CWPROOT_WIN%\PYTHON-GUIDE.md" "%DIST_DIR%\doc\" >nul 2>nul
+copy "%CWPROOT_WIN%\README.md" "%DIST_DIR%\doc\" >nul 2>nul
+copy "%CWPROOT_WIN%\CHANGES.md" "%DIST_DIR%\doc\" >nul 2>nul
 copy "%CWPROOT_WIN%\README" "%DIST_DIR%\doc\README_ORIGINAL.txt" >nul 2>nul
 echo   Copied documentation to doc\
 
@@ -140,13 +141,27 @@ if exist "%CWPROOT_WIN%\man" (
     echo   No man pages found (run zau\tools\run_man_generator.bat first)
 )
 
-REM Copy PyQt GUI
-echo Copying SU Flow GUI...
-copy "%CWPROOT_WIN%\zau\src\pysu\gui\suflow_gui.py" "%DIST_DIR%\gui\" >nul
-copy "%CWPROOT_WIN%\zau\src\pysu\requirements.txt" "%DIST_DIR%\gui\" >nul
-copy "%CWPROOT_WIN%\zau\src\pysu\setup_gui.bat" "%DIST_DIR%\gui\" >nul
-copy "%CWPROOT_WIN%\zau\src\pysu\run_gui.bat" "%DIST_DIR%\gui\" >nul
-echo   Copied GUI to gui\
+REM Copy ZAU packages (complete structure for portable distribution)
+echo Copying ZAU packages...
+mkdir "%DIST_DIR%\zau" 2>nul
+mkdir "%DIST_DIR%\zau\src" 2>nul
+mkdir "%DIST_DIR%\zau\scripts" 2>nul
+
+REM Copy src directory (excluding venv and source files)
+xcopy "%CWPROOT_WIN%\zau\src\pysu" "%DIST_DIR%\zau\src\pysu\" /E /I /Q /EXCLUDE:"%~dp0exclude_venv.txt" >nul
+xcopy "%CWPROOT_WIN%\zau\src\processtree" "%DIST_DIR%\zau\src\processtree\" /E /I /Q >nul
+copy "%CWPROOT_WIN%\zau\src\__init__.py" "%DIST_DIR%\zau\src\" >nul 2>nul
+
+REM Copy scripts
+xcopy "%CWPROOT_WIN%\zau\scripts" "%DIST_DIR%\zau\scripts\" /E /I /Q >nul
+
+REM Copy documentation (optional)
+if exist "%CWPROOT_WIN%\zau\doc" (
+    mkdir "%DIST_DIR%\zau\doc" 2>nul
+    xcopy "%CWPROOT_WIN%\zau\doc" "%DIST_DIR%\zau\doc\" /E /I /Q >nul
+)
+
+echo   Copied ZAU packages to zau\
 
 REM Create README for distribution
 echo Creating distribution README...
@@ -164,7 +179,7 @@ echo   include\  - Header files
 echo   doc\      - Documentation
 echo   man\      - Unix man pages
 echo   samples\  - Sample SU data files
-echo   gui\      - PyQt6 SU Flow GUI
+echo   zau\      - ZAU packages ^(Python GUI and utilities^)
 echo(
 echo Quick Start:
 echo   1. Add bin\ to your PATH
@@ -173,15 +188,25 @@ echo(
 echo For pipelines, use suflow.exe:
 echo   bin\suflow.exe "suplane ^| sugain agc=1 ^| sufilter"
 echo(
-echo GUI Setup ^(requires Python 3.x^):
-echo   1. cd gui
+echo GUI Setup ^(requires Python 3.8+^):
+echo   Minimum: Python 3.8
+echo   Recommended: Python 3.10 or higher
+echo(
+echo   1. cd zau\src\pysu
 echo   2. setup_gui.bat   ^(creates venv, installs PyQt6^)
 echo   3. run_gui.bat     ^(launches the GUI^)
 echo(
+echo Distribution Notes:
+echo   - This distribution is portable and self-contained
+echo   - You can extract it to any location and it will work
+echo   - All paths are relative to the distribution root
+echo   - The zau\ directory contains all Python packages and scripts
+echo(
 echo Documentation:
+echo   doc\README.md            - Project overview and quick start
 echo   doc\USER_GUIDE.md        - How to use SU programs
-echo   doc\CHANGES.md           - Port summary and fixes
 echo   doc\PYTHON-GUIDE.md      - Python plugin integration guide
+echo   doc\CHANGES.md           - Port summary and fixes
 echo(
 echo Built: %DATE%
 ) > "%DIST_DIR%\README.txt"

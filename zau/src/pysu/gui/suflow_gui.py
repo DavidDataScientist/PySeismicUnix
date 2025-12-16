@@ -27,9 +27,14 @@ from PyQt6.QtGui import QFont, QColor, QPalette, QTextCursor
 
 # Find project root (look for bin/suflow.exe)
 def find_project_root():
-    """Find the project root by looking for bin/suflow.exe"""
+    """Find the project root by looking for bin/suflow.exe
+    
+    Works for both development and distribution:
+    - Development: walks up from zau/src/pysu/gui/ to find project root
+    - Distribution: walks up from dist/cwpsu-windows-x64/zau/src/pysu/gui/ to find distribution root
+    """
     current = Path(__file__).resolve().parent
-    for _ in range(10):  # Look up to 10 levels
+    for _ in range(15):  # Look up to 15 levels (increased for distribution support)
         if (current / "bin" / "suflow.exe").exists():
             return current
         current = current.parent

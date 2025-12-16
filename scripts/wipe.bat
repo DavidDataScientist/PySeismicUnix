@@ -1,11 +1,8 @@
 @echo off
-REM Wipe all build outputs (libraries and executables)
-REM This script removes all final build products from lib/ and bin/ directories
+REM Wipe all build outputs (libraries, executables, and distribution)
+REM This script removes all final build products from lib/, bin/, and dist/ directories
 REM
-REM Usage: wipe.bat [--dist]
-REM   --dist    Also remove the dist/ directory
-REM
-REM WARNING: This permanently deletes all built libraries and executables!
+REM WARNING: This permanently deletes all built libraries, executables, and distribution!
 
 setlocal EnableDelayedExpansion
 
@@ -21,17 +18,11 @@ echo.
 echo CWPROOT = %CWPROOT%
 echo.
 
-REM Check for --dist flag
-set "REMOVE_DIST=0"
-if "%1"=="--dist" set "REMOVE_DIST=1"
-
 REM Confirm deletion
 echo WARNING: This will permanently delete:
 echo   - All libraries from lib/
 echo   - All executables from bin/
-if %REMOVE_DIST%==1 (
-    echo   - Distribution directory dist/
-)
+echo   - Distribution directory dist/
 echo.
 set /p CONFIRM="Are you sure? (yes/no): "
 if /i not "%CONFIRM%"=="yes" (
@@ -89,25 +80,22 @@ if exist "%CWPROOT%\bin\*.exe" (
     echo [SKIP] No .exe files found in bin/
 )
 
-REM Remove distribution if requested
-if %REMOVE_DIST%==1 (
-    echo.
-    echo ========================================
-    echo Removing Distribution
-    echo ========================================
-    echo.
-    
-    if exist "%CWPROOT%\dist" (
-        echo Removing dist/ directory...
-        rmdir /S /Q "%CWPROOT%\dist" 2>nul
-        if errorlevel 1 (
-            echo [WARNING] dist/ directory could not be deleted (may be in use)
-        ) else (
-            echo [OK] dist/ directory removed
-        )
+echo.
+echo ========================================
+echo Removing Distribution
+echo ========================================
+echo.
+
+if exist "%CWPROOT%\dist" (
+    echo Removing dist/ directory...
+    rmdir /S /Q "%CWPROOT%\dist" 2>nul
+    if errorlevel 1 (
+        echo [WARNING] dist/ directory could not be deleted (may be in use)
     ) else (
-        echo [SKIP] dist/ directory not found
+        echo [OK] dist/ directory removed
     )
+) else (
+    echo [SKIP] dist/ directory not found
 )
 
 REM Count remaining files
