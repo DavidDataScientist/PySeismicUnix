@@ -1,9 +1,5 @@
 # Testing Status
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 
 This document describes the current testing status of the PySeismicUnix project, specifically regarding cross-platform output validation.
@@ -134,3 +130,6 @@ If you perform cross-platform testing and comparison:
 *Document created: January 2025*  
 *For PySeismicUnix (CWP/SU for Windows)*
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
