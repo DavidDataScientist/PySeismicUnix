@@ -2,10 +2,6 @@
 
 This directory contains Python plugins for SU (Seismic Unix) flow pipelines.
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 
 Plugins allow Python code to be integrated into SU command pipelines, enabling custom processing steps written in Python.
@@ -73,3 +69,6 @@ register_plugin('myplugin', MyPlugin)
 - Use `initialize()` for setup and `finalize()` for cleanup
 
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
