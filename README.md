@@ -223,4 +223,6 @@ run_gui.bat
 
 ---
 
+This has been a labour of love for more than 15 years, and around 2012 I was excited to make it work under Cygwin.  Over the years I have been lucky to come up with some simple solutions to problems that I thought we intractable back then.  Thanks to COVID I had a lot of free time and this is the result.  I hope it makes you as excited as it did me!  It's finally time to share!  Cheers, *David*
+
 *For detailed information, see the documentation links above.*
