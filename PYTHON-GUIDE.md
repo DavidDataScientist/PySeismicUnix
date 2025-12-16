@@ -25,7 +25,7 @@ Platform: Windows 10/11 x64
 
 Build System: Visual Studio 2022 + GNU Make
 
-Python: 3.13.x (for GUI and plugins)
+Python: 3.8+ (for GUI and plugins)
 
 
 ---
