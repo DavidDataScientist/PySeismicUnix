@@ -1,0 +1,82 @@
+# suwaveform
+
+SUWAVEFORM - generate a seismic wavelet
+
+## Synopsis
+
+```bash
+suwaveform <stdin >stdout [optional parameters]
+```
+
+## Optional Parameters
+
+type=akb	wavelet type
+akb:	AKB wavelet defined by max frequency fpeak
+berlage: Berlage wavelet
+gauss:   Gaussian wavelet defined by frequency fpeak
+gaussd:  Gaussian first derivative wavelet
+ricker1: Ricker wavelet defined by frequency fpeak
+ricker2: Ricker wavelet defined by half and period
+spike:   spike wavelet, shifted by time tspike
+unit:	unit wavelet, i.e. amplitude = 1 = const.
+dt=0.004	time sampling interval in seconds
+ns=		if set, number of samples in  output trace
+fpeak=20.0	peak frequency of a Berlage, Ricker, or Gaussian,
+and maximum frequency of an AKB wavelet in Hz
+half=1/fpeak   Ricker wavelet "ricker2": half-length
+period=c*half  Ricker wavelet "ricker2": period (c=sqrt(6)/pi)
+distort=0.0	Ricker wavelet "ricker2": distortion factor
+decay=4*fpeak  Berlage wavelet: exponential decay factor in 1/sec
+tn=2	   Berlage wavelet: time exponent
+ipa=-90	Berlage wavelet: initial phase angle in degrees
+tspike=0.0	Spike wavelet: time at spike in seconds
+verbose=0	1: echo output wavelet length
+
+## Examples
+
+```
+A normalized, zero-phase Ricker wavelet with a peak frequency
+of 15 Hz is generated and convolved with a spike dataset:
+suwaveform type=ricker1 fpeak=15 | sugain pbal=1 > wavelet.su
+suplane npl=1 | suconv sufile=wavelet.su | suxwigb
+Gaussian and derivatives of Gaussians:
+Use "sudgwaveform" to generate these
+Technical references:
+Aldridge, D. F., 1990, The Berlage wavelet: Geophysics, 55,1508-1511.
+Caveat:
+This program does not check for aliasing.
+```
+
+## Notes
+
+If ns is not defined, the program determines the trace length
+depending on the dominant signal period.
+The Ricker wavelet "ricker1" and the Gaussian wavelet "gauss"
+are zero-phase. For these two wavelets, the trace header word
+delrt is set such that the peak amplitude is at t=0 seconds.
+If this is not acceptable, use "sushw key=delrt a=0".
+The Ricker wavelets can be defined either by the peak frequency
+fpeak ("ricker1") or by its half-length, the period, and a
+distortion factor ("ricker2"). "ricker" is an acceptable
+alias for "ricker1".
+The Berlage wavelet is defined by the peak frequency fpeak, a time
+time exponent tn describing the wavelet shape at its beginning,
+and an exponential decay factor describing the amplitude decay
+towards later times. The parameters tn and decay are non-negative,
+real numbers; tn is typically a small integer number and decay a
+multiple of the dominant signal period 1/fpeak. Additionally, an
+initial phase angle can be given; use -90 or 90 degrees for
+zero-amplitude at the beginning.
+For an AKB wavelet, fpeak is the maximum frequency; the peak
+frequency is about 1/3 of the fpeak value.
+The output wavelet can be normalized or scaled with "sugain".
+Use "suvibro" to generate a Vibroseis sweep.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

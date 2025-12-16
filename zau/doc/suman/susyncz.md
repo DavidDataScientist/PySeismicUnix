@@ -1,0 +1,53 @@
+# susyncz
+
+SUSYNCZ - SYNthetic seismograms for piecewise constant V(Z) function True amplitude (primaries only) modeling for 2.5D susyncz > outfile [parameters]
+
+## Synopsis
+
+```bash
+susyncz > outfile [parameters]
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+ninf=4        number of interfaces (not including upper surface)
+dip=5*i       dips of interfaces in degrees (i=1,2,3,4)
+zint=100*i    z-intercepts of interfaces at x=0 (i=1,2,3,4)
+v=1500+ 500*i velocities below surface & interfaces (i=0,1,2,3,4)
+rho=1,1,1,1,1 densities below surface & interfaces (i=0,1,2,3,4)
+nline=1	number of (identical) lines
+ntr=32        number of traces
+dx=10         trace interval
+tdelay=0      delay in recording time after source initiation
+dt=0.004      time interval
+nt=128        number of time samples
+
+## Examples
+
+```
+susyncz | sufilter | sugain tpow=1 | display_program
+Trace header fields set: tracl, ns, dt, delrt, ntr, sx, gx
+```
+
+## Notes
+
+The original purpose of this code was to create some nontrivial
+data for Brian Sumner's CZ suite.
+The program produces zero-offset data over dipping reflectors.
+In the original fortran code, some arrays had the index
+interval 1:ninf, as a natural way to index over the subsurface
+reflectors.  This indexing was preserved in this C translation.
+Consequently, some arrays in the code do not use the 0 "slot".
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

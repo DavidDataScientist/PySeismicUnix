@@ -1,0 +1,10 @@
+# SU Flow GUI Requirements
+PyQt6>=6.4.0
+
+# Seismic-Canvas Requirements
+# For 3D seismic visualization using VisPy/OpenGL
+numpy>=1.19.0,<2.0.0
+vispy>=0.12.0  # PyQt6 support requires VisPy 0.12+
+PyOpenGL>=3.1.0
+matplotlib>=3.3.0,<4.0.0
+

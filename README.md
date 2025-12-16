@@ -133,7 +133,7 @@ run_gui.bat
   - Installation and usage
   - Configuration
 
-- **[zau/src/winpipe/README.md](zau/src/winpipe/README.md)** - suflow.exe binary pipe wrapper
+- **[zau/src/suflow/README.md](zau/src/suflow/README.md)** - suflow.exe binary pipe wrapper
   - Windows pipe solution
   - Usage examples
   - Technical details

@@ -1,0 +1,53 @@
+# sueipofi
+
+SUEIPOFI - EIgenimage (SVD) based POlarization FIlter for three-component data
+
+## Synopsis
+
+```bash
+sueipofi <stdin >stdout [optional parameters]
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+dt=(from header)  time sampling intervall in seconds
+wl=0.1            SVD time window length in seconds
+pwr=1.0           exponent of filter weights
+interp=cubic      interpolation between initially calculated
+weights, choose "cubic" or "linear"
+verbose=0         1 = echo additional information
+file=polar        base name for additional output file(s) of
+filter weights (see flags below)
+rl1=0             1 = rectilinearity along first principal axis
+rl2=0             1 = rectilinearity along second principal axis
+pln=0             1 = planarity
+
+## Notes
+
+Three adjacent traces are considered as one three-component
+dataset.
+The filter is the sum of the first two eigenimages of the singular
+value decomposition (SVD) of the signal matrix (time window).
+Weighting functions depending on linearity and planarity of the
+signal are applied, additionally. To avoid edge effects, these are
+interpolated linearily or via cubic splines between initially
+calculated values of non-overlapping time windows.
+The algorithm is based on the assumption that the particle motion
+trajectory is essentially 2D (elliptical polarization).
+Caveat:
+Cubic spline interpolation may result in filter weights exceeding
+the set of values of initial weights. Weights outside the valid
+interval [0.0, 1.0] are clipped.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

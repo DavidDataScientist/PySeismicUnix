@@ -1,0 +1,63 @@
+# sufdmod2
+
+SUFDMOD2 - Finite-Difference MODeling (2nd order) for acoustic wave equation
+
+## Synopsis
+
+```bash
+sufdmod2 <vfile >wfile nx= nz= tmax= xs= zs= [optional parameters]
+```
+
+## Required Parameters
+
+<vfile		file containing velocity[nx][nz]
+>wfile		file containing waves[nx][nz] for time steps
+nx=			number of x samples (2nd dimension)
+nz=			number of z samples (1st dimension)
+xs=			x coordinates of source, or, alternatively, the name
+of a file that contains the x- and z-coordinates,
+with the number of pairs as the first record and
+the actual pairs of (x,z) locations following.
+zs=			z coordinates of source
+tmax=			maximum time
+
+## Optional Parameters
+
+sstrength=1.0		strength of source
+pw=0			use point or extended source geometry parameters
+=1  use horizontal plane wave source
+pwt=20		amp taper on ends of line src (in grid points)
+mono=0		use ricker wavelet as source function
+=1  use single frequency src (freq=2*fpeak)
+nt=1+tmax/dt		number of time samples (dt determined for stability)
+mt=1			number of time steps (dt) per output time step
+dx=1.0		x sampling interval
+fx=0.0		first x sample
+dz=1.0		z sampling interval
+fz=0.0		first z sample
+fmax = vmin/(10.0*h)	maximum frequency in source
+fpeak=0.5*fmax	peak frequency in ricker wavelet
+dfile=		input file containing density[nx][nz]
+vsx=			x coordinate of vertical line of seismograms
+hsz=			z coordinate of horizontal line of seismograms
+vsfile=		output file for vertical line of seismograms[nz][nt]
+hsfile=		output file for horizontal line of seismograms[nx][nt]
+ssfile=		output file for source point seismograms[nt]
+verbose=0		=1 for diagnostic messages, =2 for more
+abs=1,1,1,1		absorbing boundary conditions on top,left,bottom,right
+sides of the model.
+=0,1,1,1 for free surface condition on the top
+
+## Notes
+
+This program uses the traditional explicit second order differencing
+method.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

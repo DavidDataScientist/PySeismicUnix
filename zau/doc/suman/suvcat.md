@@ -1,0 +1,55 @@
+# suvcat
+
+SUVCAT -  append one data set to another, with or without an overlapping	region.  Data in the overlap may be determined by one of several methods.
+
+## Synopsis
+
+```bash
+suvcat data1 data2 >stdout
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+taplen=0    Length of overlap in integer number of
+samples.(Default is 0.)
+taptype=0    Type of taper or combination method in the
+overlap region.  0 - average
+1 - maximum magnitude
+2 - cosine scaled
+3 - summation
+
+## Notes
+
+This program vertically concatenates traces from data2 onto
+the end of the corresponding traces in data1, with a region
+of overlap, defined by taplen.  Data in the overlapping
+region is combined by the method specified by taptype. The
+currently available methods are:
+taptype=0    output is assigned the unweighted average of
+each point in the overlap
+taptype=1    output is assigned the value of the maximum
+absolute value of each point in the overlap
+taptype=2    output is assigned the weighted average of
+each point in the overlap, where the output
+is the sum of cos(x) times the values on the
+first section, and 1-cos(x) times the values
+on the second section, where x is factor that
+goes from 0 to pi/2 across the overlap. This
+favors the upper section in the upper part of
+the overlap, and favors the lower section in
+the lower part of the overlap.
+taptype=3    output is assigned the sum of the amplitudes
+at each sample in the overlap
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

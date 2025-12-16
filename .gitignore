@@ -1,5 +1,5 @@
 etc
-lib
+lib/*.lib
 bin/*
 prop
 INSTALL

@@ -1,0 +1,63 @@
+# succwt
+
+SUCCWT - Complex continuous wavelet transform of seismic traces
+
+## Synopsis
+
+```bash
+succwt < tdata.su > tfdata.su	[optional parameters]
+```
+
+## Required Parameters
+
+None
+
+## Optional Parameters
+
+noct=5	Number of octaves (int)
+nv=10		Number of voices per octave (int)
+fmax=Nyq	Highest frequency in transform
+p=-0.5	Power of scale value normalizing CWT
+=0 for amp-preserved spec. decomp.
+c=1/(2*fmax)	Time-domain inverse gaussian damping parameter
+(bigger c means more wavelet oscillations,
+default gives minimal oscillations)
+k=1		Use complex Morlet as wavelet transform kernel
+=2 use Fourier kernel ... Exp[i 2 pi f t]
+fs=1		Use dyadic freq sampling (CWT standard, honors
+noct, nv)
+=2 use linear freq sampling (Fourier standard)
+df=1		Frequency sample interval in Hz (used only for fs=2)
+
+## Examples
+
+```
+This generates amplitude spec of the CWT impulse response (IR).
+suspike ntr=1 ix1=1 nt=125 | succwt | suamp | suximage &
+Real part of Fourier IR with linear freq sampling:
+suspike ntr=1 ix1=1 nt=125 | succwt k=2 fs=2 | suamp mode=real | suximage &
+Real part of Fourier IR with dyadic freq sampling:
+suspike ntr=1 ix1=1 nt=125 | succwt k=2 | suamp mode=real | suximage &
+Inverse CWT: (within a constant scale factor)
+... | succwt p=-1 | suamp mode=real | sustack key=cdp > inv.su
+```
+
+## Notes
+
+1. Total number of scales: nscale = noct*nv
+2. Each input trace spawns nscale complex output traces
+3. Lowest frequency in the transform is fmax/( 2^(noct-1/nv) )
+4. Header field (cdp) used as cwt spectrum counter
+5. Header field (cdpt) used as scale counter within cwt spectrum
+6. Header field (gut) holds number of cwt scales `na'
+7. Header field (unscale) holds CWT scale `a'
+Header fields set: tracl, cdp, cdpt, unscale, gut
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

@@ -1,0 +1,66 @@
+# sukdmdcs
+
+SUKDMDCS - 2.5D datuming of sources for prestack common receiver data, using constant-background data-mapping formula. (See selfdoc for specific survey geometry requirements.)
+
+## Synopsis
+
+```bash
+sukdmdcs infile=stdin		file for input seismic traces
+```
+
+## Required Parameters
+
+infile=stdin		file for input seismic traces
+outfile=stdout	file for output
+ttfile		file for input traveltime tables
+Required parameters describing the traveltime tables:
+fzt 			first depth sample in traveltime table
+nzt 			number of depth samples in traveltime table
+dzt			depth interval in traveltime table
+fxt			first lateral sample in traveltime table
+nxt			number of lateral samples in traveltime table
+dxt			lateral interval in traveltime table
+fs 			x-coordinate of first source in table
+ns 			number of sources in table
+ds 			x-coordinate increment of sources in table
+Parameters describing the input data:
+nxso                  number of shots
+dxso                  shot interval
+fxso=0                x-coordinate of first shot
+nxgo                  number of receiver offsets per shot
+dxgo                  receiver offset interval
+fxgo=0                first receiver offset
+dt= or from header (dt)       time sampling interval of input data
+ft= or from header (ft)       first time sample of input data
+dc=0                  flag for previously datumed receivers:
+dc=0 receivers on recording surface
+dc=1 receivers on datum
+Parameters descrbing the domain of the problem:
+dzo=0.2*dzt		vertical spacing in surface determination
+offmax=99999		maximum absolute offset allowed
+Parameters describing the recording and datuming surfaces:
+recsurf=0             recording surface (horizontal=0, topographic=1)
+zrec                  defines recording surface when recsurf=0
+recfile=              defines recording surface when recsurf=1
+datsurf=0             datuming surface (horizontal=0, irregular=1)
+zdat                  defines datuming surface when datsurf=0
+datfile=              defines datuming surface when datsurf=1
+Parameters describing the extrapolation:
+aperx=nxt*dxt/2  	lateral aperture
+v0=1500(m/s)		reference wavespeed
+freq=50               dominant frequency in data, used to determine
+the minimum distance below the datum that
+the stationary phase calculation is valid.
+scale=1.0             user defined scale factor for output
+jpfile=stderr		job print file name
+mtr=100  		print verbal information at every mtr traces
+ntr=100000		maximum number of input traces to be datumed
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

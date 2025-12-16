@@ -184,7 +184,7 @@ All 23 subdirectories built successfully:
 **Files Changed:**
 
 - `src/par/lib/getpars.c`
-- `zau/src/winpipe/suflow.c` (new)
+- `zau/src/suflow/suflow.c` (new)
 
 ### 3. Path Handling ✅
 
@@ -355,7 +355,7 @@ endif
 
 ### Custom Tools
 
-- `zau/src/winpipe/suflow.c`
+- `zau/src/suflow/suflow.c`
 - `zau/src/pysu/gui/suflow_gui.py`
 - `zau/src/pysu/setup_gui.bat`
 - `zau/src/pysu/run_gui.bat`

@@ -86,6 +86,32 @@ clean.bat
 
 ---
 
+### `build_suflow.bat`
+
+**Purpose**: Build suflow.exe - Windows binary pipe wrapper
+
+**Usage**:
+```cmd
+cd scripts
+build_suflow.bat
+```
+
+**What it builds**:
+- **suflow.exe**: Windows binary pipe wrapper for SU pipelines
+  - Enables reliable binary data transfer between SU programs
+  - Solves Windows pipe corruption issues
+
+**Requirements**:
+- Visual Studio 2022 (Community, Professional, or Enterprise)
+- MSVC compiler (cl.exe)
+
+**Output**:
+- Executable: `bin/suflow.exe`
+
+**Note**: This is a standalone utility that doesn't require GNU Make. It's built directly with MSVC.
+
+---
+
 ### `build_fortran.bat`
 
 **Purpose**: Build all Fortran components
@@ -183,6 +209,15 @@ build.bat
 ```
 
 This builds all C/C++ components (libraries and SU programs).
+
+### Build suflow.exe
+
+```cmd
+cd scripts
+build_suflow.bat
+```
+
+This builds the suflow.exe binary pipe wrapper utility.
 
 ### Clean Build
 
@@ -363,6 +398,7 @@ These scripts are actively maintained and used:
 
 - `build.bat` - Main build script
 - `clean.bat` - Clean script
+- `build_suflow.bat` - suflow.exe build script
 - `build_fortran.bat` - Fortran build script
 - `build_release.bat` - Release build script
 - `verify_fortran.bat` - Fortran verification utility
@@ -406,6 +442,7 @@ These archived scripts are kept for reference but are not part of the standard b
 | `build.bat` | Build libraries + SU programs | `lib/*.lib`, `bin/*.exe` |
 | `clean.bat` | Clean build artifacts | (removes intermediate files) |
 | `wipe.bat` | Remove all build outputs | (removes final outputs) |
+| `build_suflow.bat` | Build suflow.exe | `bin/suflow.exe` |
 | `build_fortran.bat` | Build Fortran components | `bin/*.exe` (Fortran) |
 | `build_release.bat` | Build + create distribution | `dist/cwpsu-windows-x64.zip` |
 | `verify_fortran.bat` | Check Fortran setup | (status messages) |

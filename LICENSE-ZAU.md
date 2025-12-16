@@ -38,7 +38,7 @@ CWP/SU (Seismic Unix) codebase:
 
 ### Custom Tools and Utilities
 
-- **suflow.exe**: Windows binary pipe wrapper (`zau/src/winpipe/suflow.c`)
+- **suflow.exe**: Windows binary pipe wrapper (`zau/src/suflow/suflow.c`)
   - Solves Windows pipe corruption issues for SU pipelines
   - Enables reliable binary data transfer between SU programs
 

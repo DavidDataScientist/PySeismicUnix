@@ -1,0 +1,49 @@
+# sustkvel
+
+SUSTKVEL - convert constant dip layer interval velocity model to the
+
+## Synopsis
+
+```bash
+sustkvel sunmo <data.cdp par=stkpar >data.nmo
+```
+
+## Required Parameters
+
+v=	interval velocities
+h=	layer thicknesses at the cmp
+
+## Optional Parameters
+
+dip=0.0			(constant) dip of the layers (degrees)
+outpar=/dev/tty		output parameter file in the form
+required by sunmo:
+tv=zero incidence time pick vector
+v=stacking velocities vector
+
+## Examples
+
+```
+sustkvel v=5000,6000,8000,10000 h=1000,1200,1300,1500 outpar=stkpar
+sunmo <data.cdp par=stkpar >data.nmo
+sustkvel par=intpar outpar=stkpar
+sunmo <data.cdp par=stkpar >data.nmo
+If the file, intpar, contains:
+v=5000,6000,8000,10000
+h=1000,1200,1300,1500
+then the two examples are equivalent.  The created parameter file,
+stkpar, is in the form of the velocity model required by sunmo.
+Note: sustkvel does not have standard su syntax since it does not
+operate on seismic data.  Hence stdin and stdout are not used.
+Caveat: Does not accept a series of interval velocity models to
+produce a variable velocity file for sunmo.
+```
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

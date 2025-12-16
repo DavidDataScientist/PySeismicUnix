@@ -1,0 +1,52 @@
+# sumigsplit
+
+SUMIGSPLIT - Split-step depth migration for zero-offset data.
+
+## Synopsis
+
+```bash
+sumigsplit <infile >outfile vfile= [optional parameters]
+```
+
+## Required Parameters
+
+nz=                   number of depth samples
+dz=                   depth sampling interval
+vfile=                name of file containing velocities
+
+## Optional Parameters
+
+dt=from header(dt) or .004    time sampling interval
+dx=from header(d2) or 1.0     midpoint sampling interval
+ft=0.0                        first time sample
+fz=                           first depth sample
+tmpdir=        if non-empty, use the value as a directory path
+prefix for storing temporary files; else if the
+the CWP_TMPDIR environment variable is set use
+its value for the path; else use tmpfile()
+
+## Notes
+
+The input velocity file 'vfile' consists of C-style binary floats.
+The structure of this file is vfile[iz][ix]. Note that this means that
+the x-direction is the fastest direction instead of z-direction! Such a
+structure is more convenient for the downward continuation type
+migration algorithm than using z as fastest dimension as in other SU
+programs.
+Because most of the tools in the SU package (such as  unif2, unisam2,
+and makevel) produce output with the structure vfile[ix][iz], you will
+need to transpose the velocity files created by these programs. You may
+use the SU program 'transp' in SU to transpose such files into the
+required vfile[iz][ix] structure.
+(In C  v[iz][ix] denotes a v(x,z) array, whereas v[ix][iz]
+denotes a v(z,x) array, the opposite of what Matlab and Fortran
+programmers may expect.)
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

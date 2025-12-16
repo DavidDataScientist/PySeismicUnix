@@ -1,0 +1,34 @@
+# supaste
+
+SUPASTE - paste existing SU headers on existing binary data supaste <bare_data >segys  ns= head=headers ftn=0
+
+## Synopsis
+
+```bash
+supaste <bare_data >segys  ns= head=headers ftn=0
+```
+
+## Optional Parameters
+
+head=headers	file with segy headers
+ftn=0		Fortran flag
+0 = unformatted data from C
+1 = ... from Fortran
+verbose=0	1= echo number of traces pasted
+Caution:
+An incorrect ns field will munge subsequent processing.
+
+## Notes
+
+This program is used when the option head=headers is used in
+sustrip. See:   sudoc sustrip    for more details.
+Related programs:  sustrip, suaddhead
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

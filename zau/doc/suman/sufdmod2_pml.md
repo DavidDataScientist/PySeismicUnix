@@ -1,0 +1,61 @@
+# sufdmod2_pml
+
+SUFDMOD2_PML - Finite-Difference MODeling (2nd order) for acoustic wave equation with PML absorbing boundary conditions. Caveat: experimental PML absorbing boundary condition version,
+
+## Synopsis
+
+```bash
+sufdmod2_pml <vfile >wfile nx= nz= tmax= xs= zs= [optional parameters]
+```
+
+## Required Parameters
+
+<vfile		file containing velocity[nx][nz]
+>wfile		file containing waves[nx][nz] for time steps
+nx=			number of x samples (2nd dimension)
+nz=			number of z samples (1st dimension)
+xs=			x coordinates of source
+zs=			z coordinates of source
+tmax=			maximum time
+
+## Optional Parameters
+
+nt=1+tmax/dt		number of time samples (dt determined for stability)
+mt=1			number of time steps (dt) per output time step
+dx=1.0		x sampling interval
+fx=0.0		first x sample
+dz=1.0		z sampling interval
+fz=0.0		first z sample
+fmax = vmin/(10.0*h)	maximum frequency in source wavelet
+fpeak=0.5*fmax	peak frequency in ricker wavelet
+dfile=		input file containing density[nx][nz]
+vsx=			x coordinate of vertical line of seismograms
+hsz=			z coordinate of horizontal line of seismograms
+vsfile=		output file for vertical line of seismograms[nz][nt]
+hsfile=		output file for horizontal line of seismograms[nx][nt]
+ssfile=		output file for source point seismograms[nt]
+verbose=0		=1 for diagnostic messages, =2 for more
+abs=1,1,1,1		Absorbing boundary conditions on top,left,bottom,right
+sides of the model.
+=0,1,1,1 for free surface condition on the top
+...PML parameters....
+pml_max=1000.0        PML absorption parameter
+pml_thick=0           half-thickness of pml layer (0 = do not use PML)
+
+## Notes
+
+This program uses the traditional explicit second order differencing
+method.
+Two different absorbing boundary condition schemes are available. The
+first is a traditional absorbing boundary condition scheme created by
+Hale, 1990. The second is based on the perfectly matched layer (PML)
+method of Berenger, 1995.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

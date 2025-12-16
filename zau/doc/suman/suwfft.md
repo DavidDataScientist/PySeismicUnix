@@ -1,0 +1,51 @@
+# suwfft
+
+SUWFFT - Weighted amplitude FFT with spectrum flattening 0->Nyquist suwfft <stdin | suifft >sdout
+
+## Synopsis
+
+```bash
+suwfft SUWFFT - Weighted amplitude FFT with spectrum flattening 0->Nyquist
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+w0=0.75		weight for AmpSpectrum[f-df]
+w1=1.00		weight for AmpSpectrum[f].. center value
+w2=0.75		weight for AmpSpectrum[f+df]
+
+## Examples
+
+```
+1. boost data bandwidth to 10-90 Hz
+suwfft < data.su | suifft | sufilter f=5,8,90,100 | suximage
+1. view amplitude spectrum after flattening
+suwfft < data.su | suamp | suximage
+Caveat: The process of cascading the forward and inverse Fourier
+transforms may result in the output trace length being greater than
+the input trace length owing to zero padding. The user may wish to
+apply suwind to return the number of samples per trace to the original
+value:  Here NS is the number of samples per trace on the original data
+... | suwind itmax=NS | ...
+```
+
+## Notes
+
+1. output format is same as sufft
+2. suwfft | suifft is not quite a no-op since the trace
+length will usually be longer due to fft padding.
+3. using w0=0 w1=1 w2=0  gives truly flat spectrum, for other
+weight choices the spectrum retains some of its original topograpy
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*
