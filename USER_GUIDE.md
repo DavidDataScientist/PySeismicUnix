@@ -1,5 +1,9 @@
 # CWP/SU Windows User Guide
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
+
 ## Introduction
 
 This is a Windows port of CWP/SU (Seismic Unix), a comprehensive suite of seismic data processing tools. This guide explains how to use the Windows version effectively.
@@ -67,6 +71,33 @@ suflow.exe "surange < input.su | sugain agc=1 | sufilter f=10,20,40,50"
 REM Complex workflow
 suflow.exe "suplane | sugain agc=1 | sufilter f=10,20,40,50 | suspecfx | suximage"
 ```
+
+### Python Plugins
+
+**`pysurun.exe`** allows you to run Python-based plugins in SU pipelines:
+
+```batch
+REM Basic usage with Python plugin
+pysurun.exe plugin=pysuflipsign < input.su > output.su
+
+REM In a pipeline
+suflow.exe "sugain agc=1 | pysurun plugin=pysuflipsign | surange"
+
+REM With virtual environment
+pysurun.exe plugin=pysuflipsign venv=./venv < input.su > output.su
+```
+
+**Parameters:**
+- **`plugin=name`** (required) - Name of Python plugin to execute
+- **`python=python`** (optional) - Python interpreter command (default: `python`)
+- **`venv=path`** (optional) - Path to virtual environment
+- **`module=zau.src.pysu.plugins`** (optional) - Python module path
+- **`verbose=0`** (optional) - Set to `1` for verbose output
+
+**Available Plugins:**
+- `pysuflipsign` - Flips the sign of all trace samples
+
+**Note:** Python plugins must be installed in your Python environment. See `zau/src/pysu/plugins/README.md` for creating custom plugins.
 
 ### GUI Workflows
 
@@ -191,6 +222,10 @@ susort.exe cdp offset < input.su > output.su
 - `sureflpsvsh` - Reflection coefficients
 - `sudctcomp` - DCT compression
 
+### Python Integration
+- `pysurun` - Run Python plugins in SU pipelines
+- `suflow` - Windows binary pipe wrapper for pipelines
+
 ---
 
 ## Tips and Best Practices
@@ -287,6 +322,12 @@ REM Shows usage and parameters
 - **Seismic Unix Wiki:** https://wiki.seismic-unix.org/
 - **Documentation:** See `doc\` directory
 
+### Python Plugin Documentation
+
+For detailed information on creating and using Python plugins:
+- **Plugin System:** `zau/src/pysu/plugins/README.md`
+- **Plugin API:** See plugin base classes and examples
+
 ### Example Workflows
 
 See the GUI's preset workflows for common processing sequences:
@@ -319,8 +360,9 @@ See the GUI's preset workflows for common processing sequences:
 
 1. **Explore Sample Data:** Process files in `samples\`
 2. **Try the GUI:** Launch `gui\run_gui.bat`
-3. **Read Documentation:** Check `doc\WINDOWS_BUILD_GUIDE.md` for advanced topics
-4. **Review Changes:** See `doc\CHANGES.md` for port details
+3. **Try Python Plugins:** Use `pysurun` to extend SU with Python
+4. **Read Documentation:** Check `doc\WINDOWS_BUILD_GUIDE.md` for advanced topics
+5. **Review Changes:** See `doc\CHANGES.md` for port details
 
 ---
 

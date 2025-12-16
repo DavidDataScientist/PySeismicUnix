@@ -1,5 +1,9 @@
 # CWP/SU Windows Port - Changes Summary
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
+
 ## Overview
 
 This document summarizes all changes made to port CWP/SU from Unix to Windows using Visual Studio 2022 and GNU Make.
@@ -169,7 +173,13 @@ All 23 subdirectories built successfully:
 **Fixes:**
 
 - Added `_setmode(_fileno(stdin), _O_BINARY)` and `_setmode(_fileno(stdout), _O_BINARY)` to `initargs()` in `src/par/lib/getpars.c`
-- Created `suflow.exe` wrapper using temporary files for pipelines
+
+`suflow.exe` provides a wrapper that:
+- Parses pipeline strings (commands separated by `|`)
+- Executes commands sequentially using temporary files for intermediate data
+- Ensures binary-mode data transfer without corruption
+- Automatically cleans up temporary files
+- Supports stdin/stdout or explicit file I/O
 
 **Files Changed:**
 
@@ -352,9 +362,14 @@ endif
 
 ### Documentation
 
-- `documents/WINDOWS_BUILD_GUIDE.md`
-- `documents/USER_GUIDE.md`
-- `documents/CHANGES.md` (this file)
+- `WINDOWS_BUILD_GUIDE.md` - Build instructions
+- `USER_GUIDE.md` - User guide
+- `PYTHON-GUIDE.md` - Python integration guide
+- `CHANGES.md` (this file) - Port summary
+- `include/README.md` - Header file modifications
+- `include/win32_compat/README.md` - Windows compatibility layer documentation
+- `scripts/README.md` - Build scripts reference
+- Component-specific README files in `zau/` subdirectories
 
 ---
 

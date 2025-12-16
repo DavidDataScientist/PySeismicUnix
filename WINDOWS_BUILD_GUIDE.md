@@ -1,5 +1,9 @@
 # CWP/SU Windows Build Guide
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
+
 ## Overview
 
 This document describes how to build and use CWP/SU (Seismic Unix) on Windows using Visual Studio 2022 and GNU Make.
@@ -224,6 +228,25 @@ Use file redirection instead of pipes, or use `suflow.exe` for pipelines.
 | zau\scripts\generate_su_makefiles.ps1 | Generate Makefiles |
 
 ---
+
+## Additional Resources
+
+### Windows Compatibility Documentation
+
+- **[include/README.md](../include/README.md)** - Header file modifications for Windows
+  - Changes to `cwp.h` and `su_xdr.h`
+  - Windows compatibility fixes and implementation details
+
+- **[include/win32_compat/README.md](../include/win32_compat/README.md)** - Windows compatibility layer
+  - Complete POSIX compatibility implementation
+  - File operations, directory handling, path conversion
+  - Detailed technical documentation
+
+### Build Scripts
+
+- **[scripts/README.md](../scripts/README.md)** - Build scripts reference
+  - All build, clean, and distribution scripts
+  - Usage and troubleshooting
 
 ## Contact & Resources
 
