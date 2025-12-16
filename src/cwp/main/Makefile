@@ -62,15 +62,15 @@ endif
 
 INSTALL:	$(LOCAL_PROGS)
 	@-if exist INSTALL del /F /Q INSTALL 2>nul
-	@copy /Y ctrlstrip$(EXEEXT) ..\..\bin\ctrlstrip$(EXEEXT) >nul 2>&1
-	@copy /Y conjtest$(EXEEXT) ..\..\bin\conjtest$(EXEEXT) >nul 2>&1
-	@copy /Y downfort$(EXEEXT) ..\..\bin\downfort$(EXEEXT) >nul 2>&1
-	@copy /Y fcat$(EXEEXT) ..\..\bin\fcat$(EXEEXT) >nul 2>&1
-	@copy /Y isatty$(EXEEXT) ..\..\bin\isatty$(EXEEXT) >nul 2>&1
-	@copy /Y maxints$(EXEEXT) ..\..\bin\maxints$(EXEEXT) >nul 2>&1
-	@copy /Y pause$(EXEEXT) ..\..\bin\pause$(EXEEXT) >nul 2>&1
-	@copy /Y t$(EXEEXT) ..\..\bin\t$(EXEEXT) >nul 2>&1
-	@copy /Y upfort$(EXEEXT) ..\..\bin\upfort$(EXEEXT) >nul 2>&1
+	@copy /Y ctrlstrip$(EXEEXT) ..\..\..\bin\ctrlstrip$(EXEEXT) >nul 2>&1
+	@copy /Y conjtest$(EXEEXT) ..\..\..\bin\conjtest$(EXEEXT) >nul 2>&1
+	@copy /Y downfort$(EXEEXT) ..\..\..\bin\downfort$(EXEEXT) >nul 2>&1
+	@copy /Y fcat$(EXEEXT) ..\..\..\bin\fcat$(EXEEXT) >nul 2>&1
+	@copy /Y isatty$(EXEEXT) ..\..\..\bin\isatty$(EXEEXT) >nul 2>&1
+	@copy /Y maxints$(EXEEXT) ..\..\..\bin\maxints$(EXEEXT) >nul 2>&1
+	@copy /Y pause$(EXEEXT) ..\..\..\bin\pause$(EXEEXT) >nul 2>&1
+	@copy /Y t$(EXEEXT) ..\..\..\bin\t$(EXEEXT) >nul 2>&1
+	@copy /Y upfort$(EXEEXT) ..\..\..\bin\upfort$(EXEEXT) >nul 2>&1
 	@echo. > $@ 2>nul || type nul > $@
 
 # Pattern rule for building programs locally

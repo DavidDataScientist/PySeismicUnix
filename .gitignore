@@ -27,3 +27,6 @@ src/sub/sub/parser.c
 *.ascii
 *.zip
 demo/
+/dist
+*.exp
+*.exp
