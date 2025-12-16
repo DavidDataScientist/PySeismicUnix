@@ -1,9 +1,5 @@
 # CWP/SU Windows User Guide
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Introduction
 
 This is a Windows port of CWP/SU (Seismic Unix), a comprehensive suite of seismic data processing tools. This guide explains how to use the Windows version effectively.
@@ -368,3 +364,7 @@ See the GUI's preset workflows for common processing sequences:
 
 *Happy processing!*
 
+
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
