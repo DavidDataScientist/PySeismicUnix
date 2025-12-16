@@ -31,3 +31,5 @@ demo/
 *.exp
 *.exp
 MISSING_BINARIES.md
+/zau/thirdparty/scons
+/zau/thirdparty/seismic-canvas
