@@ -1,9 +1,5 @@
 # Visual Studio 2022 Command Shells Guide
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 
 This guide explains how to get, install, and use Visual Studio 2022 command shells for building PySeismicUnix (CWP/SU for Windows). It covers both manual building using VS2022 command shells and using the automated build scripts.
@@ -547,3 +543,6 @@ build.bat
 *Document created: January 2025*  
 *For PySeismicUnix (CWP/SU for Windows)*
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
