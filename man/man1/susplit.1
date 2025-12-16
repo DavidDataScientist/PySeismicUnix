@@ -1,0 +1,31 @@
+.TH SUSPLIT 1 "susplit" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+susplit \- SUSPLIT - Split traces into different output files by keyword value susplit <stdin >stdout [options]
+.SH SYNOPSIS
+.B susplit
+
+\fBsusplit\fR <stdin >stdout [options]
+.SH DESCRIPTION
+SUSPLIT - Split traces into different output files by keyword value susplit <stdin >stdout [options]
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+key=cdp		Key header word to split on (see segy.h)
+stem=split_	Stem name for output files
+middle=key	middle of name of output files
+suffix=.su	Suffix for output files
+numlength=7	Length of numeric part of filename
+verbose=0	=1 to echo filenames, etc.
+close=1		=1 to close files before opening new ones
+.SH NOTES
+The most efficient way to use this program is to presort the input data
+into common keyword gathers, prior to using susplit.
+Use "suputgthr" to put SU data into SU data directory format.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

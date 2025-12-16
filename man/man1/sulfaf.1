@@ -1,0 +1,40 @@
+.TH SULFAF 1 "sulfaf" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sulfaf \- SULFAF -  Low frequency array forming
+.SH SYNOPSIS
+.B sulfaf
+
+\fBsulfaf\fR < stdin > stdout [optional parameters]
+.SH DESCRIPTION
+SULFAF -  Low frequency array forming
+.SH OPTIONAL PARAMETERS
+key=ep	header keyword describing the gathers
+f1=3		lower frequency	cutof
+f2=20		high frequency cutof
+fr=5		frequency ramp
+vel=1000	surface wave velocity
+dx=10		trace spacing
+maxmix=tr.ntr	default is the entire gather
+adb=1.0	add back ratio 1.0=pure filtered 0.0=origibal
+tri=0		1 Triangular weight in mixing window
+.SH EXAMPLES
+susort ep offset < data.su > datasorted.su
+suputgthr dir=Data verbose=1 < datasorted.su
+sugetgthr dir=Data verbose=1 > dataupdated.su
+sulfaf  < dataupdated.su > ccfiltdata.su
+(Work in progress, editing required)
+.SH NOTES
+The traces transformed into the freqiency domain
+where a trace mix is performed in the specifed frequency range
+as Mix=vel/(freq*dx)
+This program uses "get_gather" and "put_gather" so requires that
+the  data be sorted into ensembles designated by "key", with the ntr
+field set to the number of traces in each respective ensemble.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

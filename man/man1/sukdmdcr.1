@@ -1,0 +1,27 @@
+.TH SUKDMDCR 1 "sukdmdcr" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sukdmdcr \- SUKDMDCR - 2
+.SH SYNOPSIS
+.B sukdmdcr
+
+infile=stdin		file for input seismic traces
+.SH DESCRIPTION
+SUKDMDCR - 2.5D datuming of receivers for prestack, common source data using constant-background data mapping formula. (See selfdoc for specific survey requirements.)
+.SH OPTIONAL PARAMETERS
+aperx=nxt*dxt/2  	lateral half-aperture
+v0=1500(m/s)		reference wavespeed
+freq=50               dominant frequency in data, used to determine
+the minimum distance below the datum that
+the stationary phase calculation is valid.
+scale=1.0             user defined scale factor for output
+jpfile=stderr		job print file name
+mtr=100  		print verbal information at every mtr traces
+ntr=100000		maximum number of input traces to be datumed
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

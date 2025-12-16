@@ -1,0 +1,39 @@
+.TH SUDGWAVEFORM 1 "sudgwaveform" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sudgwaveform \- SUDGWAVEFORM - make Gaussian derivative waveform in SU format
+.SH SYNOPSIS
+.B sudgwaveform
+
+\fBsudgwaveform\fR >stdout  [optional parameters]
+.SH DESCRIPTION
+SUDGWAVEFORM - make Gaussian derivative waveform in SU format
+.SH OPTIONAL PARAMETERS
+n=2    	order of derivative (n>=1)
+fpeak=35	peak frequency
+nfpeak=n*n	max. frequency = nfpeak * fpeak
+nt=128	length of waveform
+shift=0	additional time shift in s (used for plotting)
+sign=1	use =-1 to change sign
+verbose=0	=0 don't display diagnostic messages
+=1 display diagnostic messages
+.SH EXAMPLES
+dgwaveform n=10 fpeak=300 | suxgraph style=normal &
+For other seismic waveforms, please use "suwaveform".
+.SH NOTES
+This code computes a waveform that is the n-th order derivative of a
+Gaussian. The variance of the Gaussian is specified through its peak
+frequency, i.e. the frequency at which the amplitude spectrum of the
+Gaussian has a maximum. nfpeak is used to compute maximum frequency,
+which in turn is used to compute the sampling interval. Increasing
+nfpeak gives smoother plots. In order to have a (pseudo-) causal
+pulse, the program computes a time shift equal to sqrt(n)/fpeak. An
+additional shift can be applied with the parameter shift. A positive
+value shifts the waveform to the right.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

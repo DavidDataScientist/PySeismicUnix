@@ -1,0 +1,31 @@
+.TH SUKEYCOUNT 1 "sukeycount" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sukeycount \- SUKEYCOUNT - sukeycount writes a count of a selected key sukeycount key=keyword < infile [> outfile]
+.SH SYNOPSIS
+.B sukeycount
+
+\fBsukeycount\fR key=keyword < infile [> outfile]
+.SH DESCRIPTION
+SUKEYCOUNT - sukeycount writes a count of a selected key sukeycount key=keyword < infile [> outfile]
+.SH REQUIRED PARAMETERS
+key=keyword      One key word.
+.SH OPTIONAL PARAMETERS
+verbose=0  quiet
+=1  chatty
+Writes the key and the count to the terminal or a text
+file when a change of key occurs. This does not provide
+a unique key count (see SUCOUNTKEY for that).
+Note that for key values  1 2 3 4 2 5
+value 2 is counted once per occurrence since this program
+only recognizes a change of key, not total occurrence.
+.SH EXAMPLES
+sukeycount < stdin key=fldr
+sukeycount < stdin key=fldr > out.txt
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

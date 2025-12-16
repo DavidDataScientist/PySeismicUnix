@@ -1,0 +1,28 @@
+.TH SUGAUSSTAPER 1 "sugausstaper" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sugausstaper \- SUGAUSSTAPER - Multiply traces with gaussian taper
+.SH SYNOPSIS
+.B sugausstaper
+
+\fBsugausstaper\fR < stdin > stdout [optional parameters]
+.SH DESCRIPTION
+SUGAUSSTAPER - Multiply traces with gaussian taper
+.SH REQUIRED PARAMETERS
+<none>
+.SH OPTIONAL PARAMETERS
+key=offset    keyword of header field to weight traces by
+x0=300        key value defining the center of gaussian window
+xw=50         width of gaussian window in units of key value
+.SH NOTES
+Traces are multiplied with a symmetrical gaussian taper
+w(t)=exp(-((key-x0)/xw)**2)
+unlike "sutaper" the value of x0 defines center of the taper
+rather than the edges of the data.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,26 @@
+.TH SUPHASE 1 "suphase" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suphase \- SUPHASE - PHASE manipulation by linear transformation suphase  <stdin >sdout
+.SH SYNOPSIS
+.B suphase
+
+\fBsuphase\fR  <stdin >sdout
+.SH DESCRIPTION
+SUPHASE - PHASE manipulation by linear transformation suphase  <stdin >sdout
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+a=90			constant phase shift
+b=180/PI              linear phase shift
+c=0.0			phase = a +b*(old_phase)+c*f;
+.SH NOTES
+A program that allows the user to experiment with changes in the phase
+spectrum of a signal.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

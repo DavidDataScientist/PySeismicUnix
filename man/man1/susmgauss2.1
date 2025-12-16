@@ -1,0 +1,25 @@
+.TH SUSMGAUSS2 1 "susmgauss2" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+susmgauss2 \- SUSMGAUSS2 --- SMOOTH a uniformly sampled 2d array of velocities using a Gaussian filter specified with correlation lengths a1 and a2
+.SH SYNOPSIS
+.B susmgauss2
+
+\fBsusmgauss2\fR < stdin [optional parameters ] > stdout
+.SH DESCRIPTION
+SUSMGAUSS2 --- SMOOTH a uniformly sampled 2d array of velocities using a Gaussian filter specified with correlation lengths a1 and a2.
+.SH OPTIONAL PARAMETERS
+a1=0			smoothing parameter in the 1 direction
+a2=0			smoothing parameter in the 2 direction
+.SH NOTES
+Larger a1 and a2 result in a smoother velocity. The velocities are
+first transformed to slowness and then a Gaussian filter is applied
+in the wavenumber domain.
+Input file must be in SU format. The output file is smoothed velocity
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

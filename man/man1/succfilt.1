@@ -1,0 +1,32 @@
+.TH SUCCFILT 1 "succfilt" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+succfilt \- SUCCFILT -  FX domain Correlation Coefficient FILTER
+.SH SYNOPSIS
+.B succfilt
+
+sucff < stdin > stdout [optional parameters]
+.SH DESCRIPTION
+SUCCFILT -  FX domain Correlation Coefficient FILTER
+.SH OPTIONAL PARAMETERS
+cch=1.0		Correlation coefficient high pass value
+ccl=0.3		Correlation coefficient low pass value
+key=ep		ensemble identifier
+padd=25		FFT padding in percentage
+.SH EXAMPLES
+susort ep offset < data.su > datasorted.su
+suputgthr dir=Data verbose=1 < datasorted.su
+sugetgthr dir=Data verbose=1 > dataupdated.su
+succfilt  < dataupdated.su > ccfiltdata.su
+(Work in progress, editing required)
+.SH NOTES
+This program uses "get_gather" and "put_gather" so requires that
+the  data be sorted into ensembles designated by "key", with the ntr
+field set to the number of traces in each respective ensemble.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

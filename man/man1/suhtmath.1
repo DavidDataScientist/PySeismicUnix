@@ -1,0 +1,32 @@
+.TH SUHTMATH 1 "suhtmath" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suhtmath \- SUHTMATH - do unary arithmetic operation on segy traces with headers values suhtmath <stdin >stdout
+.SH SYNOPSIS
+.B suhtmath
+
+\fBsuhtmath\fR <stdin >stdout
+.SH DESCRIPTION
+SUHTMATH - do unary arithmetic operation on segy traces with headers values suhtmath <stdin >stdout
+.SH REQUIRED PARAMETERS
+none
+Optional parameter:
+key=tracl	header word to use
+op=nop		operation flag
+nop   : no operation
+add   : add header to trace
+mult  : multiply trace with header
+div   : divide trace by header
+scale=1.0	scalar multiplier for header value
+const=0.0	additive constant for header value
+Operation order:
+op=add:	out(t) = in(t) + (scale * key + const)
+op=mult:	out(t) = in(t) * (scale * key + const)
+op=div:	out(t) = in(t) / (scale * key + const)
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

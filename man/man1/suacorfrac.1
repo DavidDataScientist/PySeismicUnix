@@ -1,0 +1,38 @@
+.TH SUACORFRAC 1 "suacorfrac" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suacorfrac \- SUACORFRAC -- general FRACtional Auto-CORrelation/convolution
+.SH SYNOPSIS
+.B suacorfrac
+
+\fBsuacorfrac\fR power= [optional parameters] <indata >outdata
+.SH DESCRIPTION
+SUACORFRAC -- general FRACtional Auto-CORrelation/convolution
+.SH OPTIONAL PARAMETERS
+a=0			exponent of complex amplitude
+b=0			multiplier of complex phase
+dt=(from header)	time sample interval (in seconds)
+verbose=0		=1 for advisory messages
+ntout=tr.ns		number of time samples output
+sym=0			if non-zero, produce a symmetric output from
+lag -(ntout-1)/2 to lag +(ntout-1)/2
+.SH NOTES
+The calculation is performed in the frequency domain.
+The fractional autocorrelation/convolution is obtained by raising
+Fourier coefficients to seperate real powers
+(a,b) for amp and phase:
+Aout exp[-i Pout] = Ain Ain^a exp[-i (1+b) Pin]
+where A=amplitude  P=phase.
+Some special cases:
+(a,b)=(1,1)	-->	auto-correlation
+(a,b)=(0.5,0.5)	-->	half-auto-correlation
+(a,b)=(0,0)	-->	no change to data
+(a,b)=(0.5,-0.5)-->	half-auto-convolution
+(a,b)=(1,-1)	-->	auto-convolution
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

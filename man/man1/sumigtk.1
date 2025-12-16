@@ -1,0 +1,49 @@
+.TH SUMIGTK 1 "sumigtk" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sumigtk \- SUMIGTK - MIGration via T-K domain method for common-midpoint stacked data
+.SH SYNOPSIS
+.B sumigtk
+
+\fBsumigtk\fR <stdin >stdout dxcdp= [optional parms]
+.SH DESCRIPTION
+SUMIGTK - MIGration via T-K domain method for common-midpoint stacked data
+.SH REQUIRED PARAMETERS
+dxcdp                   distance between successive cdps
+.SH OPTIONAL PARAMETERS
+fmax=Nyquist            maximum frequency
+tmig=0.0                times corresponding to interval velocities in vmig
+vmig=1500.0             interval velocities corresponding to times in tmig
+vfile=                  binary (non-ascii) file containing velocities v(t)
+nxpad=0                 number of cdps to pad with zeros before FFT
+ltaper=0                length of linear taper for left and right edges
+verbose=0               =1 for diagnostic print
+tmpdir= 	 if non-empty, use the value as a directory path
+prefix for storing temporary files; else if the
+the CWP_TMPDIR environment variable is set use
+its value for the path; else use tmpfile()
+.SH NOTES
+Input traces must be sorted by either increasing or decreasing cdp.
+The tmig and vmig arrays specify an interval velocity function of time.
+Linear interpolation and constant extrapolation is used to determine
+interval velocities at times not specified.  Values specified in tmig
+must increase monotonically.
+Alternatively, interval velocities may be stored in a binary file
+containing one velocity for every time sample.  If vfile is specified,
+then the tmig and vmig arrays are ignored.
+The time of first sample is assumed to be zero, regardless of the value
+of the trace header field delrt.
+The migration is a reverse time migration in the (t,k) domain. In the
+first step, the data g(t,x) are Fourier transformed x->k into the
+the time-wavenumber domain g(t,k).
+Then looping over wavenumbers, the data are then reverse-time
+finite-difference migrated, wavenumber by wavenumber.  The resulting
+migrated data m(tau,k), now in the tau (migrated time) and k domain,
+are inverse fourier transformed back into m(tau,xout) and written out.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

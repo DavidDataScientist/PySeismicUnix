@@ -1,0 +1,28 @@
+.TH SUANALYTIC 1 "suanalytic" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suanalytic \- SUANALYTIC - use the Hilbert transform to generate an ANALYTIC (complex) trace suanalytic <stdin >sdout
+.SH SYNOPSIS
+.B suanalytic
+
+\fBsuanalytic\fR <stdin >sdout
+.SH DESCRIPTION
+SUANALYTIC - use the Hilbert transform to generate an ANALYTIC (complex) trace suanalytic <stdin >sdout
+.SH NOTES
+The output are complex valued traces. The analytic trace is defined as
+ctr[ i ] = indata[i] + i hilb[indata[t]]
+where the imaginary part is the hilbert tranform of the original trace
+The Hilbert transform is computed in the direct (time) domain
+If phaserot is set, then a phase rotated complex trace is produced
+ctr[ i ] = cos[phaserot]*indata[i] + i sin[phaserot]* hilb[indata[t]]
+Use "suamp" to extract real, imaginary, amplitude (modulus), etc
+Exmple:
+suanalytic < sudata | suamp mode=amp | suxgraph
+Use "suattributes" for instantaneous phase, frequency, etc.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

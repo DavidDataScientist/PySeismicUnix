@@ -1,0 +1,24 @@
+.TH SUGPRFB 1 "sugprfb" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sugprfb \- SUGPRFB - SU program to remove First Breaks from GPR data sugprfb < radar traces >outfile nx=51		number of traces to sum to create pilot trace (odd)
+.SH SYNOPSIS
+.B sugprfb
+
+\fBsugprfb\fR < radar traces >outfile
+.SH DESCRIPTION
+SUGPRFB - SU program to remove First Breaks from GPR data sugprfb < radar traces >outfile nx=51		number of traces to sum to create pilot trace (odd)
+.SH NOTES
+The first fbt samples from nx traces are stacked to form a pilot
+first break trace, this is fitted to the actual traces by shifting
+and scaling.		 The nx traces long spatial window is
+slided along the section and a new pilot traces is formed for each
+position. The scalers in percent and the time shifts are stored in
+header words trwf and grnors.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

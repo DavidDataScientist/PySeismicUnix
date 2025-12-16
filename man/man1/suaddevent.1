@@ -1,0 +1,29 @@
+.TH SUADDEVENT 1 "suaddevent" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suaddevent \- SUADDEVENT - add a linear or hyperbolic moveout event to seismic data
+.SH SYNOPSIS
+.B suaddevent
+
+\fBsuaddevent\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUADDEVENT - add a linear or hyperbolic moveout event to seismic data
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+type=nmo    =lmo for linear event
+t0=1.0      zero-offset intercept time IN SECONDS
+vel=3000.   moveout velocity in m/s
+amp=1.      amplitude
+dt=	 must provide if 0 in headers (seconds)
+Typical usage:
+sunull nt=500 dt=0.004 ntr=100 | sushw key=offset a=-1000 b=20 \
+| suaddevent v=1000 t0=0.05 type=lmo | suaddevent v=1800 t0=0.8 \
+| sufilter f=8,12,75,90 | suxwigb clip=1 &
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,32 @@
+.TH SUMEAN 1 "sumean" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sumean \- SUMEAN - get the mean values of data traces
+.SH SYNOPSIS
+.B sumean
+
+\fBsumean\fR < stdin > stdout [optional parameters]
+.SH DESCRIPTION
+SUMEAN - get the mean values of data traces
+.SH REQUIRED PARAMETERS
+power = 2.0		mean to the power
+(e.g. = 1.0 mean amplitude, = 2.0 mean energy)
+.SH OPTIONAL PARAMETERS
+verbose = 0		writes mean value of section to outpar
+= 1 writes mean value of each trace / section to
+outpar
+outpar=/dev/tty   output parameter file
+abs = 1             average absolute value
+= 0 preserve sign if power=1.0
+.SH NOTES
+Each sample is raised to the requested power, and the sum of all those
+values is averaged for each trace (verbose=1) and the section.
+The values power=1.0 and power=2.0 are physical, however other powers
+represent other mathematical L-p norms and may be of use, as well.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

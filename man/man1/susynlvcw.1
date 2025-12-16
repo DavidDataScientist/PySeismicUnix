@@ -1,0 +1,37 @@
+.TH SUSYNLVCW 1 "susynlvcw" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+susynlvcw \- SUSYNLVCW - SYNthetic seismograms for Linear Velocity function for mode Converted Waves
+.SH SYNOPSIS
+.B susynlvcw
+
+\fBsusynlvcw\fR >outfile [optional parameters]
+.SH DESCRIPTION
+SUSYNLVCW - SYNthetic seismograms for Linear Velocity function for mode Converted Waves
+.SH OPTIONAL PARAMETERS
+nt=101		number of time samples
+dt=0.04		time sampling interval (sec)
+ft=0.0		first time (sec)
+nxo=1			number of source-receiver offsets
+dxo=0.05		offset sampling interval (km)
+.SH NOTES
+Offsets are signed - may be positive or negative.  Receiver locations
+are computed by adding the signed offset to the source location.
+Specify either midpoint sampling or shotpoint sampling, but not both.
+If neither is specified, the default is the midpoint sampling above.
+More than one ref (reflector) may be specified.  When obliquity factors
+are included, then only the left side of each reflector (as the x,z
+reflector coordinates are traversed) is reflecting.  For example, if x
+coordinates increase, then the top side of a reflector is reflecting.
+Note that reflectors are encoded as quoted strings, with an optional
+reflector amplitude: preceding the x,z coordinates of each reflector.
+Default amplitude is 1.0 if amplitude: part of the string is omitted.
+Note that gamma<1 implies P-SV mode conversion, gamma>1 implies SV-P,
+and gamma=1 implies no mode conversion.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

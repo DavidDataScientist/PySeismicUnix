@@ -1,0 +1,28 @@
+.TH BHEDTOPAR 1 "bhedtopar" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+bhedtopar \- BHEDTOPAR - convert a Binary tape HEaDer file to PAR file format bhedtopar < stdin outpar=parfile
+.SH SYNOPSIS
+.B bhedtopar
+
+\fBbhedtopar\fR < stdin outpar=parfile
+.SH DESCRIPTION
+BHEDTOPAR - convert a Binary tape HEaDer file to PAR file format bhedtopar < stdin outpar=parfile
+.SH OPTIONAL PARAMETERS
+swap=0 			=1 to swap bytes
+outpar=/dev/tty		=parfile  name of output param file
+.SH NOTES
+This program dumps the contents of a SEGY binary tape header file, as
+would be produced by segyread and segyhdrs to a file in "parfile" format.
+A "parfile" is an ASCII file containing entries of the form param=value.
+Here "param" is the keyword for the binary tape header field and
+"value" is the value of that field. The parfile may be edited as
+any ASCII file. The edited parfile may then be made into a new binary tape
+header file via the program    setbhed.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

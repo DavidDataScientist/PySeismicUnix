@@ -1,0 +1,32 @@
+.TH SUINTVEL 1 "suintvel" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suintvel \- SUINTVEL - convert stacking velocity model to interval velocity model suintvel vs= t0= outpar=/dev/tty
+.SH SYNOPSIS
+.B suintvel
+
+operate on seismic data.  Hence stdin and stdout are not used.
+.SH DESCRIPTION
+SUINTVEL - convert stacking velocity model to interval velocity model suintvel vs= t0= outpar=/dev/tty
+.SH REQUIRED PARAMETERS
+vs=	stacking velocities
+t0=	normal incidence times
+.SH OPTIONAL PARAMETERS
+mode=0			output h= v= ; =1 output v=  t=
+outpar=/dev/tty		output parameter file in the form:
+h=layer thicknesses vector
+v=interval velocities vector
+....or ...
+t=vector of times from t0
+v=interval velocities vector
+.SH EXAMPLES
+Note: suintvel does not have standard su syntax since it does not
+operate on seismic data.  Hence stdin and stdout are not used.
+Note: may go away in favor of par program, velconv, by Dave
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

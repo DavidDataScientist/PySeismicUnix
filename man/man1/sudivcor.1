@@ -1,0 +1,33 @@
+.TH SUDIVCOR 1 "sudivcor" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sudivcor \- SUDIVCOR - Divergence (spreading) correction
+.SH SYNOPSIS
+.B sudivcor
+
+\fBsudivcor\fR <stdin >stdout  [optional parms]
+.SH DESCRIPTION
+SUDIVCOR - Divergence (spreading) correction
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+trms=0.0	times corresponding to rms velocities in vrms
+vrms=1500.0	rms velocities corresponding to times in trms
+vfile=	binary (non-ascii) file containing velocities vrms(t)
+.SH NOTES
+The trms, vrms arrays specify an rms velocity function of time.
+Linear interpolation and constant extrapolation is used to determine
+rms velocities at times not specified.  Values specified in trms
+must increase monotonically.
+Alternatively, rms velocities may be stored in a binary file
+containing one velocity for every time sample.  If vfile is specified,
+then the trms and vrms arrays are ignored.
+The time of the first sample is assumed to be constant, and is taken
+as the value of the first trace header field delrt.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

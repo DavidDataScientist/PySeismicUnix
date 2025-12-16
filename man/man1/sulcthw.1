@@ -1,0 +1,36 @@
+.TH SULCTHW 1 "sulcthw" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sulcthw \- SULCTHW - Linear Coordinate Transformation of Header Words sulcthw <infile >outfile xt=0
+.SH SYNOPSIS
+.B sulcthw
+
+\fBsulcthw\fR <infile >outfile
+.SH DESCRIPTION
+SULCTHW - Linear Coordinate Transformation of Header Words sulcthw <infile >outfile xt=0.0	Translation of X
+.SH NOTES
+Translation:
+x = x'+ xt;y = y'+ yt;z = z' + zt;
+Rotations:
+Around Z axis
+X = x*cos(zr)+y*sin(zr);
+Y = y*cos(zr)-x*sin(zr);
+Around Y axis
+Z = z*cos(yr)+x*sin(yr);
+X = x*cos(yr)-z*sin(yr);
+Around X axis
+Y = y*cos(xr)+z*sin(xr);
+Z = Z*cos(xr)-y*sin(xr);
+Header words triplets that are transformed
+sx,sy,selev
+gx,gy,gelev
+The header words restored as 32 bit integers using SEG-Y
+convention (with coordinate scalers scalco and scalel).
+After transformation they are converted back to integers and stored.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

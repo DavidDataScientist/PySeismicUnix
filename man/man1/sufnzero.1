@@ -1,0 +1,26 @@
+.TH SUFNZERO 1 "sufnzero" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sufnzero \- SUFNZERO - get Time of First Non-ZERO sample by trace
+.SH SYNOPSIS
+.B sufnzero
+
+\fBsufnzero\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUFNZERO - get Time of First Non-ZERO sample by trace
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+mode=first   	Output time of first non-zero sample
+=last for last non-zero sample
+=both for both first & last non-zero samples
+min=0   	Threshold value for considering as zero
+Any abs(sample)<min is considered to be zero
+key=key1,...	Keyword(s) to print
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

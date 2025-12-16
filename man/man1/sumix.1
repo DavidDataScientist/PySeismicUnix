@@ -1,0 +1,26 @@
+.TH SUMIX 1 "sumix" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sumix \- SUMIX - compute weighted moving average (trace MIX) on a panel of seismic data sumix <stdin >sdout
+.SH SYNOPSIS
+.B sumix
+
+\fBsumix\fR <stdin >sdout
+.SH DESCRIPTION
+SUMIX - compute weighted moving average (trace MIX) on a panel of seismic data sumix <stdin >sdout
+.SH EXAMPLES
+sumix <stdin mix=.6,1,1,1,.6 >sdout 	(default) mix over 5 traces weights
+sumix <stdin mix=1,1,1 >sdout 	simple 3 trace moving average
+.SH NOTES
+The number of values defined by mix=val1,val2,... determines the number
+of traces to be averaged, the values determine the weights.
+Mix applied left-to-right (in 2D data) and only begins after the
+nmix traces, where nmix is the number of mix weights to avoid
+left end edge effects.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

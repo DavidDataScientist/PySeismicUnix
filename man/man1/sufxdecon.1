@@ -1,0 +1,33 @@
+.TH SUFXDECON 1 "sufxdecon" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sufxdecon \- SUFXDECON - random noise attenuation by FX-DECONvolution sufxdecon <stdin >stdout [
+.SH SYNOPSIS
+.B sufxdecon
+
+\fBsufxdecon\fR <stdin >stdout [...]
+.SH DESCRIPTION
+SUFXDECON - random noise attenuation by FX-DECONvolution sufxdecon <stdin >stdout [...]
+.SH OPTIONAL PARAMETERS
+taper=.1	length of taper
+fmin=6.       minimum frequency to process in Hz  (accord to twlen)
+fmax=.6/(2*dt)  maximum frequency to process in Hz
+twlen=entire trace  time window length (minimum .3 for lower freqs)
+ntrw=10       number of traces in window
+ntrf=4        number of traces for filter (smaller than ntrw)
+verbose=0	=1 for diagnostic print
+tmpdir=	if non-empty, use the value as a directory path	prefix
+for storing temporary files; else, if the CWP_TMPDIR
+environment variable is set, use its value for the path;
+else use tmpfile()
+Notes: Each trace is transformed to the frequency domain.
+For each frequency, Wiener filtering, with unity prediction in
+space, is used to predict the next sample.
+At the end of the process, data is mapped back to t-x domain.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

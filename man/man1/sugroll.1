@@ -1,0 +1,32 @@
+.TH SUGROLL 1 "sugroll" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sugroll \- SUGROLL - Ground roll supression using Karhunen-Loeve transform
+.SH SYNOPSIS
+.B sugroll
+
+\fBsugroll\fR <infile >outfile  [optional parameters]
+.SH DESCRIPTION
+SUGROLL - Ground roll supression using Karhunen-Loeve transform
+.SH OPTIONAL PARAMETERS
+dt=tr.dt (from header) 	time sampling interval (secs)
+nx=ntr   (counted from data)	number of horizontal samples (traces)
+sb=0      1 for the graund-roll
+verbose=0	verbose = 1 echoes information
+nrot=3        the principal components for the m largest eigenvalues
+tmpdir= 	 if non-empty, use the value as a directory path
+prefix for storing temporary files; else if the
+the CWP_TMPDIR environment variable is set use
+its value for the path; else use tmpfile()
+.SH NOTES
+The method developed here is to extract the ground-roll from the
+common-shot gathers using Karhunen-Loeve transform, and then to substract
+it from the original data. The advantage is the ground-roll is suppresed
+with negligible distortion of the signal.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

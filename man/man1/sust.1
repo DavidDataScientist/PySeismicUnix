@@ -1,0 +1,34 @@
+.TH SUST 1 "sust" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sust \- SUST -  Outputs a time-frequency representation of seismic data via the Stockwell transform (S- transform)
+.SH SYNOPSIS
+.B sust
+
+\fBsust\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUST -  Outputs a time-frequency representation of seismic data via the Stockwell transform (S- transform)
+.SH REQUIRED PARAMETERS
+if dt is not set in header, then dt is mandatory
+.SH OPTIONAL PARAMETERS
+dt=(from header)	time sampling interval (sec)
+fmin=0			minimum frequency of filter array (hz)
+fmax=NYQUIST 		maximum frequency of filter array (hz)
+verbose=0		=1 supply additional info
+Notes: The S transform provide a time dependent frequency distribution
+of the signal. It is similar to the Gabor transform which which utilizes a Gaussian window for for spectral location. In the S transform the
+Gaussian window is scalable whith the frequency which provides a better
+time freqency resolution
+.SH EXAMPLES
+suvibro | sust | suximage
+suvibro | sust | suxmovie n1= n2= n3=
+(because suxmovie scales it's amplitudes off of the first panel,
+may have to experiment with the wclip and bclip parameters
+suvibro | sust | supsimage | ... ( your local PostScript utility)
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

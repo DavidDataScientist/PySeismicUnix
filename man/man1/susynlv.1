@@ -1,0 +1,36 @@
+.TH SUSYNLV 1 "susynlv" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+susynlv \- SUSYNLV - SYNthetic seismograms for Linear Velocity function
+.SH SYNOPSIS
+.B susynlv
+
+\fBsusynlv\fR >outfile [optional parameters]
+.SH DESCRIPTION
+SUSYNLV - SYNthetic seismograms for Linear Velocity function
+.SH OPTIONAL PARAMETERS
+nt=101                 number of time samples
+dt=0.04                time sampling interval (sec)
+ft=0.0                 first time (sec)
+kilounits=1            input length units are km or kilo-feet
+=0 for m or ft
+.SH NOTES
+Offsets are signed - may be positive or negative.  Receiver locations
+are computed by adding the signed offset to the source location.
+Specify either midpoint sampling or shotpoint sampling, but not both.
+If neither is specified, the default is the midpoint sampling above.
+More than one ref (reflector) may be specified. Do this by putting
+additional ref= entries on the commandline. When obliquity factors
+are included, then only the left side of each reflector (as the x,z
+reflector coordinates are traversed) is reflecting.  For example, if x
+coordinates increase, then the top side of a reflector is reflecting.
+Note that reflectors are encoded as quoted strings, with an optional
+reflector amplitude: preceding the x,z coordinates of each reflector.
+Default amplitude is 1.0 if amplitude: part of the string is omitted.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

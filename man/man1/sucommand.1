@@ -1,0 +1,29 @@
+.TH SUCOMMAND 1 "sucommand" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sucommand \- SUCOMMAND - pipe traces having the same key header word to command
+.SH SYNOPSIS
+.B sucommand
+
+\fBsucommand\fR <stdin >stdout [Optional parameters]
+.SH DESCRIPTION
+SUCOMMAND - pipe traces having the same key header word to command
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+verbose=0		wordy output
+key=cdp			header key word to pipe on
+command="suop nop"    command piped into
+dir=0		0:  change of header key
+-1: break in monotonic decrease of header key
++1: break in monotonic increase of header key
+.SH NOTES
+This program permits limited parallel processing capability by opening
+pipes for processes, signaled by a change in key header word value.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

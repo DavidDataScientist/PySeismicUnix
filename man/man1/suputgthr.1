@@ -1,0 +1,32 @@
+.TH SUPUTGTHR 1 "suputgthr" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suputgthr \- key parameter
+.SH SYNOPSIS
+.B suputgthr
+
+SUPUTGTHR - split the stdout flow to gathers on the bases of given
+.SH DESCRIPTION
+key parameter.
+.SH REQUIRED PARAMETERS
+dir=		Name of directory where to put the gathers
+.SH OPTIONAL PARAMETERS
+key=ep		header key word to watch
+suffix=".hsu"	extension of the output files
+verbose=0		verbose = 1 echos information
+numlength=7		Length of numeric part of filename
+.SH NOTES
+The name of the file is constructed from the key parameter. Traces
+are put into a temporary disk file, and renamed when key parameter
+changes in the input flow to "key.suffix". The result is that the
+directory "dir" contains separate files by "key" ensemble.
+Header field modified:  ntr  to be the number of traces in a given
+ensemble.
+Related programs: sugetgthr, susplit
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

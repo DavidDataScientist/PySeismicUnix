@@ -1,0 +1,21 @@
+.TH SUGET 1 "suget" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suget \- SUGET  - Connect SU program to file descriptor for input stream
+.SH SYNOPSIS
+.B suget
+
+[options]
+.SH DESCRIPTION
+SUGET  - Connect SU program to file descriptor for input stream. suget fd=$1 | next_su_module This program is for interfacing " outside processing systems "
+.SH EXAMPLES
+fd=-1        file_descriptor_for_input_stream
+verbose=0    minimal listing
+=1  asks for message with each trace processed.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

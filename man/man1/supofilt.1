@@ -1,0 +1,34 @@
+.TH SUPOFILT 1 "supofilt" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+supofilt \- SUPOFILT - POlarization FILTer for three-component data
+.SH SYNOPSIS
+.B supofilt
+
+\fBsupofilt\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUPOFILT - POlarization FILTer for three-component data
+.SH REQUIRED PARAMETERS
+dfile=polar.dir   file containing the 3 components of the
+direction of polarization
+wfile=polar.rl    file name of weighting polarization parameter
+.SH OPTIONAL PARAMETERS
+dt=(from header)  time sampling intervall in seconds
+smooth=1          1 = smooth filter operators, 0 do not
+sl=0.05           smoothing window length in seconds
+wpow=1.0          raise weighting function to power wpow
+dpow=1.0          raise directivity functions to power dpow
+verbose=0         1 = echo additional information
+.SH NOTES
+Three adjacent traces are considered as one three-component
+dataset.
+This program SUPOFILT is an extension to the polarization analysis
+program supolar. The files wfile and dfile are SU files as written
+by SUPOLAR.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

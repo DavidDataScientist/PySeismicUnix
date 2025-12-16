@@ -1,0 +1,29 @@
+.TH SUILOG 1 "suilog" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suilog \- SUILOG -- time axis inverse log-stretch of seismic traces suilog nt= ntmin=  <stdin >stdout
+.SH SYNOPSIS
+.B suilog
+
+\fBsuilog\fR nt= ntmin=  <stdin >stdout
+.SH DESCRIPTION
+SUILOG -- time axis inverse log-stretch of seismic traces suilog nt= ntmin=  <stdin >stdout
+.SH REQUIRED PARAMETERS
+nt= 	nt output from sulog prog
+ntmin= 	ntmin output from sulog prog
+dt= 	dt output from sulog prog
+.SH OPTIONAL PARAMETERS
+none
+NOTE:  Parameters needed by suilog to reconstruct the
+original data may be input via a parameter file.
+EXAMPLE PROCESSING SEQUENCE:
+sulog outpar=logpar <data1 >data2
+suilog par=logpar <data2 >data3
+where logpar is the parameter file
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

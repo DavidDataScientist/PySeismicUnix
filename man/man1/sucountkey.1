@@ -1,0 +1,21 @@
+.TH SUCOUNTKEY 1 "sucountkey" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sucountkey \- SUCOUNTKEY - COUNT the number of unique values for a given KEYword
+.SH SYNOPSIS
+.B sucountkey
+
+\fBsucountkey\fR < input.su key=[sx,gx,cdp,...]
+.SH DESCRIPTION
+SUCOUNTKEY - COUNT the number of unique values for a given KEYword. sucountkey < input.su key=[sx,gx,cdp,...]
+.SH OPTIONAL PARAMETERS
+verbose=1		chatty, =0 just print keyword number
+.SH EXAMPLES
+suplane | sucountkey key=tracl,tracr,offset
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines
