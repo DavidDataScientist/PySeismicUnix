@@ -5,10 +5,19 @@
 Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
 
 ## Overview
+PySeismicUnix is a comprehensive Windows port of CWP/SU (Seismic Unix), a powerful suite of seismic data processing tools. This port brings 312+ SU programs to Windows with full binary compatibility, Python integration, and modern workflow tools.
 
-PySeismicUnix provides comprehensive Python integration for extending and enhancing SU (Seismic Unix) workflows. This guide covers all Python-related features, including plugins, GUI tools, and development workflows.
+Key Features:
 
-**Python Version:** 3.13.x (or compatible 3.x)
+✅ 312 SU Executables - Complete seismic processing toolkit
+✅ Python Plugin System - Extend SU with custom Python algorithms
+✅ SU Flow GUI - PyQt6 graphical workflow builder
+✅ Windows Binary Pipes - Reliable pipeline execution via suflow.exe
+✅ Full Library Support - 9 core libraries (libcwp, libpar, libsu, etc.)
+✅ Fortran Components - Optional Fortran programs (Cshot, Cwell, Triso, etc.)
+Platform: Windows 10/11 x64
+Build System: Visual Studio 2022 + GNU Make
+Python: 3.13.x (for GUI and plugins)
 
 ---
 
