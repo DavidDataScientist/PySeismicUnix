@@ -29,8 +29,7 @@ src/sub/sub/parser.c
 demo/
 /dist
 *.exp
-*.exp
 MISSING_BINARIES.md
 /zau/thirdparty/scons
 /zau/thirdparty/seismic-canvas
-*.exp
+

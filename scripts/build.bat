@@ -159,7 +159,7 @@ echo Building CWP library (libcwp)...
 echo ----------------------------------------
 if exist "%CWPROOT_WIN%\src\cwp\lib\Makefile" (
     cd /d "%CWPROOT_WIN%\src\cwp\lib"
-    make 2>&1
+    make INSTALL 2>&1
     if errorlevel 1 (
         echo [FAIL] libcwp
         set /a LIB_FAIL_COUNT+=1
@@ -179,7 +179,7 @@ echo Building PAR library (libpar)...
 echo ----------------------------------------
 if exist "%CWPROOT_WIN%\src\par\lib\Makefile" (
     cd /d "%CWPROOT_WIN%\src\par\lib"
-    make 2>&1
+    make INSTALL 2>&1
     if errorlevel 1 (
         echo [FAIL] libpar
         set /a LIB_FAIL_COUNT+=1
@@ -199,7 +199,7 @@ echo Building SU library (libsu)...
 echo ----------------------------------------
 if exist "%CWPROOT_WIN%\src\su\lib\Makefile" (
     cd /d "%CWPROOT_WIN%\src\su\lib"
-    make 2>&1
+    make INSTALL 2>&1
     if errorlevel 1 (
         echo [FAIL] libsu
         set /a LIB_FAIL_COUNT+=1
@@ -605,14 +605,14 @@ echo Libraries:
 echo   Successful: %LIB_SUCCESS_COUNT%
 echo   Failed: %LIB_FAIL_COUNT%
 if not "!FAILED_LIBS!"=="" (
-    echo   Failed libraries:!FAILED_LIBS!
+    echo   Failed libraries: !FAILED_LIBS!
 )
 echo.
 echo SU Programs:
 echo   Successful: %SU_SUCCESS_COUNT%
 echo   Failed: %SU_FAIL_COUNT%
 if not "!FAILED_DIRS!"=="" (
-    echo   Failed directories:!FAILED_DIRS!
+    echo   Failed directories: !FAILED_DIRS!
 )
 echo.
 echo CWP Utilities:

@@ -56,6 +56,15 @@ if errorlevel 1 (
     echo Please fix build errors and try again.
     exit /b 1
 )
+
+REM Build suflow.exe
+echo(
+echo Building suflow.exe...
+call "%~dp0build_suflow.bat"
+if errorlevel 1 (
+    echo(
+    echo [WARNING] suflow.exe build failed. Continuing without it...
+)
 echo(
 echo ========================================
 echo Packaging distribution...
