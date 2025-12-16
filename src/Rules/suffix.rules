@@ -1,0 +1,25 @@
+# Suffix rules for building libraries and object files
+# Windows-compatible: Uses Windows del command instead of Unix rm
+
+.SUFFIXES : .o .c .cc .cpp .a .java .class
+.c.a	:
+	$(CC) -c $(CFLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	-if exist $*.o del /F /Q $*.o 2>nul
+.cc.a	:
+	$(C++) -c $(C++FLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	-if exist $*.o del /F /Q $*.o 2>nul
+.cpp.a	:
+	$(C++) -c $(C++FLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	-if exist $*.o del /F /Q $*.o 2>nul
+.cc.o	:
+	$(C++) -c $(C++FLAGS) $<
+.cpp.o	:
+	$(C++) -c $(C++FLAGS) $<
+
+.java.class:
+	$(JC) $(JFLAGS) $*.java
+
+

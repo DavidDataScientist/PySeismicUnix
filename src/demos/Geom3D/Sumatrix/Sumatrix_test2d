@@ -1,0 +1,21 @@
+#!/bin/sh
+# Sumatrix_test2d - for program SUMATRIX
+# Author: Andre Latour, Aug 2024
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Basic tests.                                                           "
+  echo "---  In particular:                                                         "
+  echo "---    - set rfill=0 and compare zone 102 to default rfill=1                "
+  echo "---    - set rdivider=-1 in order to flip receiver order                    "
+  echo "---    - set sdivider=-1 in order to flip source order                      "
+  echo "---    - try skeyloc=grnlof and rkeyloc=gy (or whatever)                    "
+  echo "----------------------------------------------------------------------------"
+#
+# sumatrix <fake04.su >fake05.su sdivider=-1 rdivider=-1 rfill=1 skeyloc=grnlof
+# sumatrix <fake08.su >fake11.su rfill=1 skeyloc=grnlof rkeyloc=gy rdivider=-1 
+# sumatrix <fake08.su >fake11.su lenzone=300 numzone=25 
+# sumatrix <fake08.su >fake11.su maxsources=164 maxreceivers=386 
+  sumatrix <fake08.su >fake11.su  
+#
+  suxwigb <fake11.su title=" Notes: 3 missing shots circa zone 46, odd layouts zone 85 and 102, missing receivers 451-457 (near last 30 zones)." &
+#

@@ -1,0 +1,35 @@
+# Path abbreviations
+# Use backslashes for Windows paths (OS=Windows_NT)
+# Use forward slashes for Unix paths
+
+ifeq ($(OS),Windows_NT)
+# Windows: use backslashes for all file paths
+B = $(ROOT)\bin
+I = $(ROOT)\include
+L = $(ROOT)\lib
+M = $(ROOT)\man
+XTI = $(I)\Xtcwp
+XMI = $(I)\Xmcwp
+ITRI = $(I)\Triangles
+ITETRA = $(I)\Tetra
+IWPC = $(I)\Wpc
+IDCT = $(I)\Dct
+IRFL = $(I)\Reflect
+IMGL = $(I)\MGL
+R = $(L)\X11\app-defaults
+else
+# Unix: use forward slashes
+B = $(ROOT)/bin
+I = $(ROOT)/include
+L = $(ROOT)/lib
+M = $(ROOT)/man
+XTI = $I/Xtcwp
+XMI = $I/Xmcwp
+ITRI = $I/Triangles
+ITETRA = $I/Tetra
+IWPC = $I/Wpc
+IDCT = $I/Dct
+IRFL = $I/Reflect
+IMGL = $I/MGL
+R = $L/X11/app-defaults
+endif

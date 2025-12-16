@@ -1,0 +1,28 @@
+#!/bin/sh
+# Sumatrix_create_simple2d - for program SUMATRIX
+# Author: Andre Latour, Aug 2024
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Use sugeomcsv to create traces with simple 2D geometry (which happens  "
+  echo "---  to be crooked). See demos/Geom3D/Sugeomcsv for how this is done.       "
+  echo "----------------------------------------------------------------------------"
+#
+  sugeomcsv rfile=l2xcrook.txt >fake01.su setid=x names=sps2 match=sps2 \
+            create=all spikes=4,0.01,220,1000,228,-1200,1000,0
+#
+  sugeomcsv rfile=l2scrook.txt <fake01.su >fake02.su setid=s names=sps2 match=sps2 
+#
+  sugeomcsv rfile=l2rcrook.txt <fake02.su >fake03.su setid=r names=sps2 match=sps2
+#
+  subfilt <fake03.su >fake04.su fpasshi=20
+#
+  sustatic <fake04.su >fake05.su hdrs=1 sign=-1
+#
+  suchw <fake05.su >fake06.su key1=sstat,gstat,tstat key2=sstat,offset,tstat key3=sstat,gstat,tstat a=0,0,0 b=0,0.09,0 c=0,0,0
+#
+  sustatic <fake06.su >fake07.su hdrs=1 sign=-1
+#
+  suwind <fake07.su >fake08.su key=gaps reject=451,452,453,454,455,456,457
+#
+  suxwigb <fake08.su title="flatish" &
+#

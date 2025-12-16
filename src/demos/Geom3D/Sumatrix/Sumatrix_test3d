@@ -1,0 +1,17 @@
+#!/bin/sh
+# Sumatrix_test3d - for program SUMATRIX
+# Author: Andre Latour, Aug 2024
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Basic 3d test. Note the fake 3d survey used here is too small to get   "
+  echo "---  a good idea of what actual surveys will look like. But...              "
+  echo "---  - set rfill=0 for easier understanding                                 "
+  echo "---  - use the keys used in sugeomcsv for SPS2 files.                       "
+  echo "---  - use the sdivider and rdivider (set -1 to re-order the output).       "
+  echo "----------------------------------------------------------------------------"
+#
+  sumatrix <fake37.su >fake41.su rfill=0 skeyloc=grnofr,grnlof sdivider=1,1    \
+                                         rkeyloc=grnors,gaps   rdivider=1,1 
+#
+  suxwigb <fake41.su title=" 3d " &
+#

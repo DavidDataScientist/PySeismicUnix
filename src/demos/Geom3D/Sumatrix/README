@@ -1,0 +1,26 @@
+
+SUMATRIX - Assemble a Matrix of Trace Sample Zones.          
+ 
+ The scripts in this directory are designed to test the parameters.
+ Notice that the input fake seismic is just 1 flat horizon.
+
+ Once the fake seismic is created, varying the options in test2d and test3d.
+ 
+
+ Sometime near the end of 2024 I will produce a YouTube video about all this.
+ 
+------------------------------------------------------------------------------
+  I advise running the scripts in the following order:
+------------------------------------------------------------------------------
+
+sh ./Sumatrix_create_simple2d    Must be run first to make fake 2d seismic.
+
+sh ./Sumatrix_test2d
+
+---
+
+sh ./Sumatrix_create_simple3d    Must be run first to make fake 3d seismic.
+
+sh ./Sumatrix_test3d
+
+---

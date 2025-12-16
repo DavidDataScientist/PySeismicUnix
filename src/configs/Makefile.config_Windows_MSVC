@@ -1,0 +1,217 @@
+#=======================================================================
+#                   Windows MSVC (Visual Studio 2022) Makefile.config 
+#-----------------------------------------------------------------------
+# This file is a template for building CWP/SU with Visual Studio 2022
+# on Windows using the MSVC compiler (cl.exe) and nmake.
+#
+# NOTE: This is an initial configuration and will likely need adjustments
+#       based on your specific Windows setup and dependencies.
+#
+#=======================================================================
+
+#-----------------------------------------------------------------------
+# Windows Path Handling
+#-----------------------------------------------------------------------
+# CWPROOT must be set WITHOUT drive letter, WITH backslashes
+# Example: \src\proto\processing-su-main
+# 
+# All file paths use backslashes: \path\to\file
+# All compiler/linker flags use forward slashes: /I /nologo /W3 /link
+
+#-----------------------------------------------------------------------
+# pick up the Make rules (Gnu make or nmake)
+#-----------------------------------------------------------------------
+# Use backslashes to match CWPROOT format
+include $(CWPROOT)\src\Rules\gnumake.rules
+include $(CWPROOT)\src\Rules\abbrev.rules
+include $(CWPROOT)\src\Rules\cflags.rules
+include $(CWPROOT)\src\Rules\suffix.rules
+include $(CWPROOT)\src\Rules\misc.rules
+include $(CWPROOT)\src\Rules\opengl.rules
+include $(CWPROOT)\src\Rules\windows.rules
+
+#-----------------------------------------------------------------------
+#                      CWP feature options
+#-----------------------------------------------------------------------
+#
+# LINEHDRFLAG=SU_LINEHEADER  - adds 3200 byte text & 400 byte SEG-Y 
+#                              style line headers to output. CWP/SU
+#                              always reads either format unless SUXDR
+#                              has been selected.
+#
+# XDRFLAG=-DSUXDR            - forces all SU data to be big endian
+#                              independent of processor architecture
+#
+# LARGE_FILE_FLAG            - controls access to files > 2 GB on
+#                              some systems.
+#
+# -DSLTSU_SEGY_H             - if defined selects SLT/SU trace header
+#                              layout so both packages are compatible
+#-----------------------------------------------------------------------
+
+LINEHDRFLAG = 
+XDRFLAG = 
+# Note: XDR not needed on Windows
+ENDIANFLAG = -DCWP_LITTLE_ENDIAN
+# Windows supports large files by default in 64-bit, but we'll set it anyway
+LARGE_FILE_FLAG = -D_FILE_OFFSET_BITS=64
+
+CWP_FLAGS = $(LARGE_FILE_FLAG) $(ENDIANFLAG) $(XDRFLAG) $(LINEHDRFLAG)
+
+#-----------------------------------------------------------------------
+# system stuff
+#-----------------------------------------------------------------------
+
+SHELL = cmd.exe
+ROOT = $(CWPROOT)
+
+# Windows command equivalents
+# Windows doesn't have 'ln', use 'copy' or create hard links with mklink
+# For compatibility, we'll use copy for now (can be changed to mklink /H for hard links)
+LN = copy
+AR = lib
+ARFLAGS = /OUT:
+RANLIB = echo
+RANFLAGS = 
+# Windows doesn't use chmod the same way, but we'll keep for compatibility
+ICHMODLINE = echo.
+MCHMODLINE = echo.
+
+# Windows-specific command variables
+# Note: In recipes, use the commands directly with Windows syntax
+# For conditional use, we can check if we're on Windows
+# These are provided for reference - actual recipes should use Windows commands directly
+
+# Example usage in Makefiles:
+#   clean::
+#       -if exist *.o del /F /Q *.o 2>nul
+#   INSTALL: $(PROGS)
+#       @-if exist INSTALL del /F /Q INSTALL 2>nul
+#       @echo. > INSTALL
+
+POSTLFLAGS = 
+
+#-----------------------------------------------------------------------
+# X11 paths (if using Xming, VcXsrv, or WSL)
+#-----------------------------------------------------------------------
+# NOTE: X11 is not native to Windows. You may need to:
+# 1. Install Xming or VcXsrv for X11 support
+# 2. Use WSL (Windows Subsystem for Linux)
+# 3. Disable X11-dependent components initially
+
+# Default X11 paths (adjust based on your X11 installation)
+# Use backslashes for Windows paths, no drive letter
+IX11 = \X11\include
+LX11 = \X11\lib
+IMOTIF = \X11\include
+LMOTIF = \X11\lib
+
+# If X11 is not available, comment out X11-dependent builds
+# LD_LIBRARY_PATH is not used on Windows, use PATH instead
+# PATH += $(CWPROOT)/lib;${LX11};${LMOTIF}
+
+#-----------------------------------------------------------------------
+# Microsoft Visual C++ Compiler (cl.exe)
+#-----------------------------------------------------------------------
+# Assumes VS 2022 Developer Command Prompt environment is set up
+# Run build_vs2022.bat or build_vs2022.ps1 first to initialize
+
+CPP = cl /E
+
+# MSVC C compiler
+CC = cl
+# MSVC compiler flags:
+# /nologo          - Suppress copyright message
+# /W3              - Warning level 3 (similar to -Wall)
+# /Zi              - Generate debug information
+# /Od              - Disable optimizations (for debugging)
+# /MD              - Use multithreaded DLL runtime
+# /EHsc            - C++ exception handling
+# /TC              - Compile as C code
+# /std:c11         - C11 standard (VS 2019+)
+# /D               - Define preprocessor symbols
+# /I               - Include directory
+# _CRT_SECURE_NO_WARNINGS  - Suppress warnings for strcpy, strcat, localtime, etc.
+# _CRT_NONSTDC_NO_WARNINGS - Suppress warnings for POSIX names (open vs _open, isatty vs _isatty)
+OPTC = /nologo /W3 /Zi /Od /MD /TC /std:c11 /D_CRT_SECURE_NO_WARNINGS /D_CRT_NONSTDC_NO_WARNINGS
+# Note: -fcommon is a GCC flag, not MSVC. If using GCC/MinGW, use: OPTC = -fcommon -g -O0
+
+#-----------------------------------------------------------------------
+# Windows Path Variables for Compiler/Linker
+#-----------------------------------------------------------------------
+# Paths from abbrev.rules already use backslashes when AR=lib
+# Windows compatibility headers (unistd.h, fcntl.h, etc.)
+I_COMPAT = $(I)\win32_compat
+
+# Include paths for MSVC: main include + win32_compat for Unix headers + Dct for comp.h
+# Forward slash for /I flag, backslashes in paths
+CFLAGS = /I"$(I)" /I"$(I_COMPAT)" /I"$(I)/Dct" $(OPTC) $(CWP_FLAGS)
+
+# MSVC C++ compiler (if needed)
+C++ = cl
+C++FLAGS = /I"$(I)" /I"$(I_COMPAT)" /nologo /W3 /Zi /Od /MD /EHsc /std:c++17 $(CWP_FLAGS)
+
+# Fortran compiler (Intel oneAPI ifx - confirmed at C:\Tools\Intel\oneAPI\compiler\latest\bin\ifx.exe)
+# Intel ifx is the recommended modern Fortran compiler (LLVM-based)
+# Falls back to ifort (legacy) or gfortran if ifx not available
+# Note: Environment must be set up with setvars.bat before building Fortran components
+ifeq ($(shell where ifx.exe >nul 2>&1 && echo found),found)
+    FC = ifx
+    FOPTS = /nologo /c /Zi
+    FFLAGS = $(FOPTS)
+else ifeq ($(shell where ifort.exe >nul 2>&1 && echo found),found)
+    FC = ifort
+    FOPTS = /nologo /c /Zi
+    FFLAGS = $(FOPTS)
+else
+    # Fallback to gfortran if Intel compilers not available
+    FC = gfortran
+    FOPTS = -g
+    FFLAGS = $(FOPTS) -ffixed-line-length-none
+endif
+
+#-----------------------------------------------------------------------
+# Library and Linker settings
+#-----------------------------------------------------------------------
+
+# MSVC linker
+LINK = link
+# Linker flags:
+# /nologo          - Suppress copyright message
+# /OUT:            - Output file name
+# /LIBPATH:        - Library search path
+# $(L) from abbrev.rules already has backslashes
+PRELFLAGS = /nologo /LIBPATH:"$(L)"
+POSTLFLAGS = 
+
+# Standard Windows libraries that may be needed
+# Adjust based on what's actually required
+WINLIBS = kernel32.lib user32.lib gdi32.lib
+
+#-----------------------------------------------------------------------
+# Windows-specific notes
+#-----------------------------------------------------------------------
+#
+# 1. Path separators: Use forward slashes (/) in Makefiles, Windows handles both
+# 2. File operations: Some Unix commands need Windows equivalents:
+#    - rm -> del or if exist ... del
+#    - cp -> copy
+#    - ln -> copy or mklink
+#    - chmod -> (not needed, but kept for compatibility)
+#
+# 3. Dependencies:
+#    - X11: Install Xming/VcXsrv or use WSL, or disable X11 components
+#    - Motif: Not available on Windows, disable Motif components
+#    - OpenGL: Available via Windows SDK
+#
+# 4. Building:
+#    - First run: build_vs2022.bat to set up environment
+#    - Then: cd src && nmake install (or make install if GNU make available)
+#    - Start with core libraries, then add components incrementally
+#
+# 5. Testing:
+#    - Build individual components first
+#    - Test with sample data
+#    - Fix platform-specific issues as they arise
+#
+

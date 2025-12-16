@@ -1,0 +1,26 @@
+#!/bin/sh
+# Sunszonecsv_create_simple2dstat - for program SUNSZONECSV
+# Author: Andre Latour, Aug 2023
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Use sugeomcsv to create traces with simple 2D geometry (but crooked).  "
+  echo "---  See demos/Geom3D/Sugeomcsv for how this is done.                       "
+  echo "                                                                            "
+  echo "---  Note that first and second shots are long-enders (opposites).          "
+  echo "---  Note that third and fourth shots are split-spread.                     "
+  echo "---  Note that only 4 shots with 60 traces each are created (create=240)    "
+  echo "---  with one wavelet at about 200 milliseconds.                            "
+  echo "                                                                            "
+  echo "----------------------------------------------------------------------------"
+#
+  sugeomcsv rfile=l2xcrook.txt >fake01.su setid=x names=sps2 match=sps2 \
+            create=240 spikes=4,0.01,200,1000,208,-1200,1000,0
+#
+  sugeomcsv rfile=l2scrook.txt <fake01.su >fake02.su setid=s names=sps2 match=sps2 
+#
+  sugeomcsv rfile=l2rcrook.txt <fake02.su >fake03.su setid=r names=sps2 match=sps2
+#
+  subfilt <fake03.su >fake04.su fpasshi=20
+#
+  suxwigb <fake04.su title="flat, 4 shots of 60 traces each" &
+#
