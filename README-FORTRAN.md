@@ -1,9 +1,5 @@
 # Fortran Components Guide
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 
 This project includes **some** Fortran components that are built using **Intel oneAPI Fortran Compiler**. These Fortran tools are optional and are not required for the core CWP/SU functionality.
@@ -446,3 +442,6 @@ dir ..\..\..\bin\*.exe
 *Document created: January 2025*  
 *For PySeismicUnix (CWP/SU for Windows)*
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
