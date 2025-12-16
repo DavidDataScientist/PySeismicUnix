@@ -1,9 +1,5 @@
 # Python Integration Guide
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 PySeismicUnix is a comprehensive Windows port of CWP/SU (Seismic Unix), a powerful suite of seismic data processing tools. This port brings 312+ SU programs to Windows with full binary compatibility, Python integration, and modern workflow tools.
 
@@ -812,3 +808,6 @@ python generate_process_tree_yaml.py
 
 *Happy Python processing!*
 
+## Copyright
+
+Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
