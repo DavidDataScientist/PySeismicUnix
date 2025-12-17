@@ -425,6 +425,4 @@ endif
 
 ---
 
-_Port completed: December 2024_  
-_Total development time: ~2 days_  
 _Lines of code changed: ~5000+_
