@@ -1,9 +1,5 @@
 # CWP/SU Windows Port - Changes Summary
 
-## Copyright
-
-Copyright (c) 2025 ZAU.Energy Asia Limited, MIT License
-
 ## Overview
 
 This document summarizes all changes made to port CWP/SU from Unix to Windows using Visual Studio 2022 and GNU Make.
