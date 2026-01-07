@@ -1,0 +1,29 @@
+.TH SUTSQ 1 "sutsq" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sutsq \- SUTSQ -- time axis time-squared stretch of seismic traces
+.SH SYNOPSIS
+.B sutsq
+
+\fBsutsq\fR [optional parameters] <stdin >stdout
+.SH DESCRIPTION
+SUTSQ -- time axis time-squared stretch of seismic traces
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+tmin= .1*nt*dt  minimum time sample of interest
+(only needed for forward transform)
+dt= .004       output sample rate
+(only needed for inverse transform)
+flag= 1        1=forward transform: time to time squared
+-1=inverse transform: time squared to time
+Note: The output of the forward transform always starts with
+time squared equal to zero.  'tmin' is used to avoid aliasing
+the early times.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

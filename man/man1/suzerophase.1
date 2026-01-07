@@ -1,0 +1,22 @@
+.TH SUZEROPHASE 1 "suzerophase" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suzerophase \- SUZEROPHASE - convert input to zero phase equivalent
+.SH SYNOPSIS
+.B suzerophase
+
+\fBsuzerophase\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUZEROPHASE - convert input to zero phase equivalent
+.SH REQUIRED PARAMETERS
+if dt is not set in header, then dt is mandatory
+.SH OPTIONAL PARAMETERS
+t0=1.0			time of peak value t0
+verbose=0		=1 for advisory messages
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

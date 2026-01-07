@@ -1,0 +1,25 @@
+.TH SURAMP 1 "suramp" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suramp \- SURAMP - Linearly taper the start and/or end of traces to zero
+.SH SYNOPSIS
+.B suramp
+
+\fBsuramp\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SURAMP - Linearly taper the start and/or end of traces to zero.
+.SH REQUIRED PARAMETERS
+if dt is not set in header, then dt is mandatory
+.SH OPTIONAL PARAMETERS
+tmin=tr.delrt/1000	end of starting ramp (sec)
+tmax=(nt-1)*dt		beginning of ending ramp (sec)
+dt = (from header)	sampling interval (sec)
+The taper is a linear ramp from 0 to tmin and/or tmax to the
+end of the trace.  Default is a no-op!
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

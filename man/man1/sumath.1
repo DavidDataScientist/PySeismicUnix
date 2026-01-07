@@ -1,0 +1,34 @@
+.TH SUMATH 1 "sumath" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sumath \- SUMATH - do math operation on su data suop <stdin >stdout op=mult
+.SH SYNOPSIS
+.B sumath
+
+suop <stdin >stdout op=mult
+.SH DESCRIPTION
+SUMATH - do math operation on su data suop <stdin >stdout op=mult
+.SH REQUIRED PARAMETERS
+none
+Optional parameter:
+op=mult		operation flag
+--------- operations -----------------
+add   : o = i + a    (o=out; i=in)
+sub   : o = i - a
+mult  : o = i * a
+div   : o = i / a
+pow   : o = i ^ a
+spow  : o = sgn(i) * abs(i) ^ a
+--------- operation parameter --------
+a=1
+copy=1		n>1 copy each trace n times
+.SH NOTES
+There is overlap between this program and "sugain" and
+"suop"
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

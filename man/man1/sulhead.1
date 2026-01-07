@@ -1,0 +1,40 @@
+.TH SULHEAD 1 "sulhead" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sulhead \- SULHEAD - Load information from an ascii column file into HEADERS based on the value of the user specified header field
+.SH SYNOPSIS
+.B sulhead
+
+\fBsulhead\fR < inflie > outfile cf=Column_file key=..  [ optional parameters]
+.SH DESCRIPTION
+SULHEAD - Load information from an ascii column file into HEADERS based on the value of the user specified header field
+.SH REQUIRED PARAMETERS
+cf=Name of column file
+key=key1,key2,...Number of column entires
+.SH OPTIONAL PARAMETERS
+mc=1		Column number to use to match rows to traces
+.SH EXAMPLES
+key=cdp,ep,sx   mc=1	cf=file
+file contains:
+1  2  3
+2  3  4
+if tr.cdp = 1 then tr.ep and tr.sx will be set to 2 and 3
+if tr.cdp = 2 then tr.ep and tr.sx will be set to 3 and 4
+if tr.cdp=other than tr.trid=3
+Caveat: the user has to make it sure that number of entires in key=
+is equal the number of columns stored in the file.
+For simple mass setting of header words, see selfdoc of:  sushw
+.SH NOTES
+Caveat: This is not simple trace header setting, but conditional
+setting.
+This utility reads the column file and loads the values into the
+specified header locations. Each column represents one set of header
+words, one of them (#mc) is used to match the rows to the traces
+using header tr.key[mc].
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

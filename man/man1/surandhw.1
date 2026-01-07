@@ -1,0 +1,32 @@
+.TH SURANDHW 1 "surandhw" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surandhw \- surandhw - set header word to random variable surandhw <stdin >stdout key=tstat a=0 min=0 max=1
+.SH SYNOPSIS
+.B surandhw
+
+\fBsurandhw\fR <stdin >stdout key=tstat a=0 min=0 max=1
+.SH DESCRIPTION
+surandhw - set header word to random variable surandhw <stdin >stdout key=tstat a=0 min=0 max=1
+.SH REQUIRED PARAMETERS
+none (no op)
+.SH OPTIONAL PARAMETERS
+key=tstat	header key word to set
+a=0		=1 flag to add original value to final key
+noise=gauss	noise probability distribution
+=flat for uniform; default Gaussian
+seed=from_clock	random number seed (integer)
+min=0		minimum random number
+max=1		maximum radnom number
+.SH EXAMPLES
+surandhw <indata key=tstat a=0 min=0 max=10  > outdata
+.SH NOTES
+The value of header word key is computed using the formula:
+val(key) = a * val(key) + rand
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

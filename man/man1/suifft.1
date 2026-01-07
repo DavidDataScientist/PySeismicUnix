@@ -1,0 +1,24 @@
+.TH SUIFFT 1 "suifft" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suifft \- SUIFFT - fft complex frequency traces to real time traces suiftt <stdin >sdout sign=-1
+.SH SYNOPSIS
+.B suifft
+
+suiftt <stdin >sdout sign=-1
+.SH DESCRIPTION
+SUIFFT - fft complex frequency traces to real time traces suiftt <stdin >sdout sign=-1
+.SH REQUIRED PARAMETERS
+none
+Optional parameter:
+sign=-1		sign in exponent of inverse fft
+Output traces are normalized by 1/N where N is the fft size.
+Note: sufft | suifft is not quite a no-op since the trace
+length will usually be longer due to fft padding.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

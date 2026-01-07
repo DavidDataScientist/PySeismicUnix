@@ -1,0 +1,32 @@
+.TH SULPRIME 1 "sulprime" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sulprime \- SULPRIME - find appropriate Backus average length for a given log suite, frequency, and purpose sulprime < vp_vs_rho
+.SH SYNOPSIS
+.B sulprime
+
+\fBsulprime\fR < vp_vs_rho.su  [options]		or
+.SH DESCRIPTION
+SULPRIME - find appropriate Backus average length for a given log suite, frequency, and purpose sulprime < vp_vs_rho.su  [options]		or
+.SH REQUIRED PARAMETERS
+none
+Optional parameter:
+b=2.0		target value of Backus number
+b=2 is transmission limit (ok for proc, mig, etc.)
+b=0.3 is scattering limit (ok for modeling)
+dz=1		input depth sample interval (ft)
+f=60		frequency (Hz)... dominant or max (to be safe)
+nmax=301	maximum averaging length (samples)
+verbose=1	print intermediate results
+=0 print final result only
+.SH NOTES
+1. input is in sync with subackus, but vp and gr not used
+(gr= gamma ray log)
+Related codes:  subackus, subackush
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

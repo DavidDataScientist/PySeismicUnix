@@ -1,0 +1,23 @@
+.TH SUCLIPHEAD 1 "sucliphead" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sucliphead \- SUCLIPHEAD - Clip header values
+.SH SYNOPSIS
+.B sucliphead
+
+\fBsucliphead\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUCLIPHEAD - Clip header values
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+key=cdp,...			header key word(s) to clip
+min=0,...			minimum value to clip
+max=ULONG_MAX,ULONG_MAX,...	maximum value to clip
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

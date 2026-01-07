@@ -1,0 +1,39 @@
+
+SUNSZONECSV - Near Surface Zone Extract and Shift.              
+ 
+ The scripts in this directory are designed to test the parameters.
+ They are not realistic tests.                                                   
+ Notice that the input fake seismic is just 1 flat horizon.
+ For 4 refraction layers, actual seismic should contain up to 4 refraction
+ wavelets which cross-over each other at various offset distances, times.
+
+ The SUNSZONECSV program can be used either to help check simple near surface
+ models, or for checking geometry update (are XYs correct, have traces been 
+ assigned to the correct points/stations). 
+ Sometime near the end of 2024 I will produce a YouTube video about all this.
+ 
+------------------------------------------------------------------------------
+  I advise running the scripts in the following order:
+------------------------------------------------------------------------------
+
+sh ./Sunszonecsv_create_simple2dstat   Must be run first to make fake seismic.
+
+sh ./Sunszonecsv_test1
+
+sh ./Sunszonecsv_test2
+
+sh ./Sunszonecsv_test3
+
+sh ./Sunszonecsv_test4
+
+---
+---
+
+ Note: To make l2scrookred files for tests, start by running the following.
+       Then use spreadsheet (I use libreOffice Calc) or other editor to add
+       near-surface model values (thicknesses and velocities) for tests 1-4.   
+       See my YouTube videos about using spreadsheets and q-files.             
+
+sh ./Sunszonecsv_SPS_Stocsv     
+
+---

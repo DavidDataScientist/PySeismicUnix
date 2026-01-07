@@ -1,0 +1,46 @@
+# sustack
+
+SUSTACK - stack adjacent traces having the same key header word
+
+## Synopsis
+
+```bash
+sustack <stdin >stdout [Optional parameters]
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+key=cdp		header key word to stack on
+normpow=1.0	each sample is divided by the
+normpow'th number of non-zero values
+stacked (normpow=0 selects no division)
+repeat=0	=1 repeats the stack trace nrepeat times
+nrepeat=10	repeats stack trace nrepeat times in
+output file
+verbose=0	verbose = 1 echos information
+
+## Notes
+
+------
+The offset field is set to zero on the output traces, unless
+the user is stacking with key=offset. In that case, the value
+of the offset field is left unchanged.
+Sushw can be used afterwards if this is not acceptable.
+For VSP users:
+The stack trace appears ten times in the output file when
+setting repeat=1 and nrepeat=10. Corridor stacking can be
+achieved by properly muting the upgoing data with SUMUTE
+before stacking.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

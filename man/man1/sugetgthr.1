@@ -1,0 +1,25 @@
+.TH SUGETGTHR 1 "sugetgthr" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sugetgthr \- SUGETGTHR - Gets su files from a directory and put them throught the unix pipe
+.SH SYNOPSIS
+.B sugetgthr
+
+\fBsugetgthr\fR  <stdin >sdout
+.SH DESCRIPTION
+SUGETGTHR - Gets su files from a directory and put them throught the unix pipe. This creates continous data flow. sugetgthr  <stdin >sdout
+.SH REQUIRED PARAMETERS
+dir=            Name of directory to fetch data from
+Every file in the directory is treated as an su file
+.SH OPTIONAL PARAMETERS
+verbose=0		=1 more chatty
+vt=0			=1 allows gathers with variable length traces
+no header checking is done!
+ns=			must be specified if vt=1; number of samples to read
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

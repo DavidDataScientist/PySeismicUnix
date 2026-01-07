@@ -1,0 +1,59 @@
+# sumax
+
+SUMAX - get trace by trace local/global maxima, minima, or absolute maximum
+
+## Synopsis
+
+```bash
+sumax <stdin >stdout [optional parameters]
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+output=ascii 		write ascii data to outpar
+=binary for binary floats to stdout
+=segy for SEGY traces to stdout
+mode=maxmin		output both minima and maxima
+=max maxima only
+=min minima only
+=abs absolute maxima only
+=rms RMS
+=thd search first max above threshold
+threshamp=0		threshold amplitude value
+threshtime=0		tmin to start search for threshold
+verbose=0 		writes global quantities to outpar
+=1 trace number, values, sample location
+=2 key1 & key2 instead of trace number
+key1=fldr		key for verbose=2
+key2=ep			key for verbose=2
+outpar=/dev/tty		output parameter file; contains output
+from verbose
+
+## Examples
+
+```
+For global max and min values:  sumax < segy_data
+For local and global max and min values:  sumax < segy_data verbose=1
+To plot values specified by mode:
+sumax < segy_data output=binary mode=modeval | xgraph n=npairs
+To plot seismic data with the only values nonzero being those specified
+by mode=modeval:
+sumax < segy_data output=segy mode=modeval | suxwigb
+Note:	while traces are counted from 1, sample values are counted from 0.
+Also, if multiple min, max, or abs max values exist on a trace,
+only the first one is captured.
+See also: suxmax, supsmax
+```
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

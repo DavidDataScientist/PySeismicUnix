@@ -1,0 +1,108 @@
+# Makefile for ...src/prop/local/Cshot
+
+include $(CWPROOT)/src/Makefile.config
+
+# Library linking flags - Windows vs Unix format
+ifeq ($(AR),lib)
+# Windows: use MSVC-style library paths and names
+# Include runtime libraries from local lib directory
+# libifcoremd.lib - Intel Fortran core runtime (multithreaded DLL)
+# ifconsol.lib - Intel Fortran console library
+# msvcrt.lib - MSVC runtime library
+LFLAGS = $(PRELFLAGS) libpar.lib libcwp.lib msvcrt.lib ifconsol.lib libifcoremd.lib $(POSTLFLAGS)
+else
+# Unix: use Unix-style flags
+LFLAGS = $(PRELFLAGS) -L$L -lpar -lcwp -lm  $(POSTLFLAGS)
+endif
+
+PROGS	=	$B/cshot1 $B/cshot2
+CPROGS	=	$B/cshotplot
+
+# Library name - use .lib extension on Windows, .a on Unix
+ifeq ($(AR),lib)
+LIB = libcshot.lib
+OBJEXT = obj
+else
+LIB = libcshot.a
+OBJEXT = o
+endif
+
+# Fortran source files
+FSRCS = contin.f shoot.f raydat.f hdwave.f misc.f splines.f fft.f addwav.f wavlet.f graphics.f
+
+# Object files
+FOBJS = $(FSRCS:.f=.$(OBJEXT))
+
+# For Windows: compile all sources to objects, then create library
+# For Unix: use archive format $(LIB)(file.o)
+ifeq ($(AR),lib)
+# Windows/MSVC approach: compile to .obj, then create library
+# Pattern rule: compile each .f file to .obj file
+%.$(OBJEXT): %.f
+	$(FC) $(FFLAGS) /Fo$@ $<
+
+$(LIB): $(FOBJS)
+	@-if exist $@ del /F /Q $@ 2>nul
+	$(AR) $(ARFLAGS)$@ $(FOBJS)
+	$(RANLIB) $@
+else
+# Unix approach: use archive format
+ARCH = $(patsubst %.f,$(LIB)(%.o),$(FSRCS))
+
+$(ARCH): $(LIB)(%.o): %.f
+	$(FC) -c $(FFLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	-if exist $*.o del /F /Q $*.o 2>nul
+
+$(LIB): $(ARCH)
+	$(RANLIB) $(LIB)
+endif
+
+#if you don't have cwp and par  installed then switch the INSTALL lines below
+#INSTALL:	$(LIB) $(PROGS) 
+INSTALL:	$(LIB) $(PROGS) $(CPROGS)
+	@-if exist INSTALL del /F /Q INSTALL 2>nul
+	@echo. > $@ 2>nul || type nul > $@
+
+# Fortran programs - link with library
+ifeq ($(AR),lib)
+# Windows: use ifx to compile and link (ifx handles Fortran entry point correctly)
+# /MD is set in FFLAGS, so object files will use DLL runtime
+# Use /link to pass library paths and libraries
+# /NODEFAULTLIB flags prevent wrong runtime libraries from being linked
+# Explicitly link modern C runtime (vcruntime140.lib, ucrt.lib) for mainCRTStartup and _fltused
+# ifx sets up entry point during compilation phase, before /link
+$(PROGS):	$(FTARGET) $(LIB)
+	$(FC) /nologo /Zi /MD $(@F).f $(LIB) /link /SUBSYSTEM:CONSOLE /NODEFAULTLIB:libcmt /NODEFAULTLIB:libifcoremt /NODEFAULTLIB:libmmt /NODEFAULTLIB:msvcrt /LIBPATH:"$(L)" vcruntime140.lib ucrt.lib libpar.lib libcwp.lib ifconsol.lib libifcoremd.lib kernel32.lib /OUT:"$@"
+	@$(MCHMODLINE)
+	@echo installing $(@F) in $B
+else
+# Unix: use Fortran compiler to link
+$(PROGS):	$(FTARGET) $(LIB)
+	$(FC) $(FFLAGS) $(@F).f -o $@ $(LIB)
+	@$(MCHMODLINE)
+	@echo installing $(@F) in $B
+endif
+
+$(CPROGS):	$(CTARGET)
+	$(CC) $(CFLAGS)  $(@F).c $(LFLAGS) -o $@
+	@$(MCHMODLINE)
+	@echo installing $(@F) in $B
+
+remake:
+	@-if exist $(LIB) del /F /Q $(LIB) 2>nul
+	@-if exist INSTALL del /F /Q INSTALL 2>nul
+	@-if exist $(PROGS) del /F /Q $(PROGS) 2>nul
+	@-if exist $(CPROGS) del /F /Q $(CPROGS) 2>nul
+	@-if exist *.$(OBJEXT) del /F /Q *.$(OBJEXT) 2>nul
+	$(MAKE) INSTALL
+
+clean::
+	-if exist junk* del /F /Q junk* 2>nul
+	-if exist core del /F /Q core 2>nul
+	-if exist a.out del /F /Q a.out 2>nul
+	-if exist *.$(OBJEXT) del /F /Q *.$(OBJEXT) 2>nul
+	-if exist $(LIB) del /F /Q $(LIB) 2>nul
+	-if exist cshot? del /F /Q cshot? 2>nul
+	-if exist *.shot del /F /Q *.shot 2>nul
+	-if exist cshotplot del /F /Q cshotplot 2>nul

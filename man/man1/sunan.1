@@ -1,0 +1,31 @@
+.TH SUNAN 1 "sunan" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sunan \- SUNAN - remove NaNs & Infs from the input stream sunan < in
+.SH SYNOPSIS
+.B sunan
+
+\fBsunan\fR < in.su >out.su
+.SH DESCRIPTION
+SUNAN - remove NaNs & Infs from the input stream sunan < in.su >out.su
+.SH OPTIONAL PARAMETERS
+verbose=1	echo locations of NaNs or Infs to stderr
+=0 silent
+...user defined ...
+value=0.0	NaNs and Inf replacement value
+... and/or....
+interp=0	=1 replace NaNs and Infs by interpolating
+neighboring finite values
+.SH NOTES
+A simple program to remove NaNs and Infs from an input stream.
+The program sets NaNs and Infs to "value" if interp=0. When
+interp=1 NaNs are replaced with the average of neighboring values
+provided that the neighboring values are finite, otherwise
+NaNs and Infs are replaced by "value".
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

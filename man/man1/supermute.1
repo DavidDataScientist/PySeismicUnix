@@ -1,0 +1,31 @@
+.TH SUPERMUTE 1 "supermute" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+supermute \- SUPERMUTE - permute or transpose a 3d datacube supermute <stdin >sdout
+.SH SYNOPSIS
+.B supermute
+
+\fBsupermute\fR <stdin >sdout
+.SH DESCRIPTION
+SUPERMUTE - permute or transpose a 3d datacube supermute <stdin >sdout
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+n1=ns from header		number of samples in the fast direction
+n2=ntr from header		number of samples in the med direction
+n3=1				number of samples in the slow direction
+o1=1				new fast direction
+o2=2				new med direction
+o3=3				new slow direction
+d1=1				output interval in new fast direction
+d2=1				output interval in new med direction
+d3=1				output interval in new slow direction
+.SH NOTES
+header fields d1 and d2 default to d1=1.0 and d2=1.0
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

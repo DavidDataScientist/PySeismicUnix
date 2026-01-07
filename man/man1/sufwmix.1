@@ -1,0 +1,29 @@
+.TH SUFWMIX 1 "sufwmix" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sufwmix \- SUFWMIX -  FX domain multidimensional Weighted Mix
+.SH SYNOPSIS
+.B sufwmix
+
+\fBsufwmix\fR < stdin > stdout [optional parameters]
+.SH DESCRIPTION
+SUFWMIX -  FX domain multidimensional Weighted Mix
+.SH REQUIRED PARAMETERS
+key=key1,key2,..	Header words defining mixing dimension
+dx=d1,d2,..		Distance units for each header word
+.SH OPTIONAL PARAMETERS
+keyg=ep		Header word indicating the start of gather
+vf=0			=1 Do a frequency dependent mix
+vmin=5000		Velocity of the reflection slope
+than should not be attenuated
+.SH NOTES
+Trace with the header word mark set to one will be
+the output trace
+(a work in progress)
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,23 @@
+.TH SURANDSTAT 1 "surandstat" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surandstat \- SURANDSTAT - Add RANDom time shifts STATIC errors to seismic traces
+.SH SYNOPSIS
+.B surandstat
+
+\fBsurandstat\fR <stdin >stdout  [optional parameters]
+.SH DESCRIPTION
+SURANDSTAT - Add RANDom time shifts STATIC errors to seismic traces
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+seed=from_clock    	random number seed (integer)
+max=tr.dt 		maximum random time shift (ms)
+scale=1.0		scale factor for shifts
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,24 @@
+.TH SUADDHEAD 1 "suaddhead" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suaddhead \- SUADDHEAD - put headers on bare traces and set the tracl and ns fields suaddhead <stdin >stdout ns= ftn=0
+.SH SYNOPSIS
+.B suaddhead
+
+\fBsuaddhead\fR <stdin >stdout ns= ftn=0
+.SH DESCRIPTION
+SUADDHEAD - put headers on bare traces and set the tracl and ns fields suaddhead <stdin >stdout ns= ftn=0
+.SH EXAMPLES
+suaddhead ns=1024 <bare_traces | sushw key=dt a=4000 >segy_traces
+This command line adds headers with ns=1024 samples.  The second part
+of the pipe sets the trace header field dt to 4 ms.	See also the
+selfdocs of related programs  sustrip and supaste.
+See:   sudoc supaste
+Related Programs:  supaste, sustrip
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,28 @@
+.TH SUDUMPTRACE 1 "sudumptrace" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sudumptrace \- SUDUMPTRACE - print selected header values and data
+.SH SYNOPSIS
+.B sudumptrace
+
+\fBsudumptrace\fR < stdin [> ascii_file]
+.SH DESCRIPTION
+SUDUMPTRACE - print selected header values and data. Print first num traces. Use SUWIND to skip traces.
+.SH OPTIONAL PARAMETERS
+num=4                    number of traces to dump
+key=key1,key2,...        key(s) to print above trace values
+hpf=0                    header print format is float
+=1 print format is exponential
+.SH EXAMPLES
+sudumptrace < inseis.su            PRINTS: 4 traces, no headers
+sudumptrace < inseis.su key=tracf,offset
+sudumptrace < inseis.su num=7 key=tracf,offset > info.txt
+sudumptrace < inseis.su num=7 key=tracf,offset hpf=1 > info.txt
+Related programs: suascii, sugethw
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

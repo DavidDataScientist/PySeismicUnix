@@ -1,0 +1,80 @@
+# Makefile for ...cwp/lib
+
+include $(CWPROOT)/src/Makefile.config
+
+D = $I/cwp.h
+
+# Library name - use .lib extension on Windows, .a on Unix
+# Check if AR is "lib" (Windows) or "ar" (Unix)
+ifeq ($(AR),lib)
+LIB = $L/libcwp.lib
+OBJEXT = obj
+else
+LIB = $L/libcwp.a
+OBJEXT = o
+endif
+
+# Source files (list all .c files that should be compiled)
+# Note: complexff.c was in original ARCH but file doesn't exist, using complexfd.c instead
+SRCS = abel.c airy.c alloc.c antialias.c axb.c bigmatrix.c butterworth.c \
+	complex.c complexd.c complexf.c complexfd.c conjugate_gradient.c \
+	convolution.c cubicspline.c dblas.c dge.c differentiate.c \
+	exit.c frannor.c franuni.c hankel.c hartley.c hilbert.c holbergd1.c \
+	intcub.c intl2b.c intlin.c intlinc.c intlirr2b.c intsinc8.c \
+	inttable8.c linfit.c linregress.c maxmin.c mkdiff.c mkhdiff.c \
+	mksinc.c mnewt.c pfafft.c dpfafft.c orthpolynomials.c polar.c \
+	printerplot.c quest.c ressinc8.c rfwtva.c rfwtvaint.c sblas.c \
+	scaxis.c sge.c svd.c shfs8r.c sinc.c sort.c sqr.c stoep.c \
+	strstuff.c swapbyte.c symmeigen.c tridiagonal.c tempname.c \
+	unwrapphase.c vandermonde.c waveforms.c windows.c wrap.c xcor.c \
+	xindex.c yclip.c yxtoxy.c zasc.c zebc.c
+
+# Object files
+OBJS = $(SRCS:.c=.$(OBJEXT))
+
+# For Windows: compile all sources to objects, then create library
+# For Unix: use archive format $(LIB)(file.o)
+ifeq ($(AR),lib)
+# Windows/MSVC approach: compile to .obj, then create library
+# Note: MSVC uses /Fo to specify output file, and /c for compile-only
+# Pattern rule: compile each .c file to .obj file
+%.$(OBJEXT): %.c $D
+	$(CC) $(CFLAGS) /c /Fo$@ $<
+
+$(LIB): $(OBJS)
+	@-if exist $@ del /F /Q $@ 2>nul
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+	$(RANLIB) $@
+else
+# Unix approach: use archive format
+ARCH = $(patsubst %.c,$(LIB)(%.o),$(SRCS))
+
+$(ARCH): $(LIB)(%.o): %.c $D
+	$(CC) -c $(CFLAGS) $<
+	$(AR) $(ARFLAGS) $@ $*.o
+	-if exist $*.o del /F /Q $*.o 2>nul
+
+$(LIB): $(ARCH)
+	$(RANLIB) $(LIB)
+endif
+
+INSTALL:	$(LIB) $L
+	@-if exist INSTALL del /F /Q INSTALL 2>nul
+	@echo. > $@ 2>nul || type nul > $@
+
+remake	:
+	@-if exist $(LIB) del /F /Q $(LIB) 2>nul
+	@-if exist INSTALL del /F /Q INSTALL 2>nul
+	@-if exist *.$(OBJEXT) del /F /Q *.$(OBJEXT) 2>nul
+	@$(MAKE) INSTALL
+
+list	:
+	$(AR) /LIST $(LIB)
+
+clean::
+	-if exist junk* del /F /Q junk* 2>nul
+	-if exist core del /F /Q core 2>nul
+	-if exist a.out del /F /Q a.out 2>nul
+	-if exist *.$(OBJEXT) del /F /Q *.$(OBJEXT) 2>nul
+
+.PRECIOUS:	 $(LIB)

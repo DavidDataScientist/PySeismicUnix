@@ -1,0 +1,21 @@
+.TH SUPUT 1 "suput" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suput \- SUPUT - Connect SU program to file descriptor for output stream
+.SH SYNOPSIS
+.B suput
+
+[options]
+.SH DESCRIPTION
+SUPUT - Connect SU program to file descriptor for output stream. su_module | suput fp=$1 This program is for interfacing " outside processing systems "
+.SH EXAMPLES
+fd=-1       file_descriptor_for_output_stream_from_su
+verbose=0   minimal listing
+=1  asks for message with each trace processed.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

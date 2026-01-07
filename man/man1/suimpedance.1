@@ -1,0 +1,24 @@
+.TH SUIMPEDANCE 1 "suimpedance" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suimpedance \- SUIMPEDANCE - Convert reflection coefficients to impedances
+.SH SYNOPSIS
+.B suimpedance
+
+\fBsuimpedance\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUIMPEDANCE - Convert reflection coefficients to impedances.
+.SH OPTIONAL PARAMETERS
+v0=1500.	Velocity at first sample (m/sec)
+rho0=1.0e6	Density at first sample  (g/m^3)
+.SH NOTES
+Implements recursion [1-R(k)]Z(k) = [1+R(k)]Z(k-1).
+The input traces are assumed to be reflectivities, and thus are
+expected to have amplitude values between -1.0 and 1.0.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

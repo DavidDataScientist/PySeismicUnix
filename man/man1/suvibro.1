@@ -1,0 +1,37 @@
+.TH SUVIBRO 1 "suvibro" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suvibro \- SUVIBRO - Generates a Vibroseis sweep (linear, linear-segment, dB per Octave, dB per Hertz, T-power)
+.SH SYNOPSIS
+.B suvibro
+
+\fBsuvibro\fR [optional parameters] > out_data_file
+.SH DESCRIPTION
+SUVIBRO - Generates a Vibroseis sweep (linear, linear-segment, dB per Octave, dB per Hertz, T-power)
+.SH OPTIONAL PARAMETERS
+dt=0.004		time sampling interval
+sweep=1	  	linear sweep
+=2 linear-segment
+=3 decibel per octave
+=4 decibel per hertz
+=5 t-power
+swconst=0.0		sweep constant (see note)
+f1=10.0		sweep frequency at start
+f2=60.0		sweep frequency at end
+tv=10.0		sweep length
+phz=0.0		initial phase (radians=1 default)
+radians=1		=0 degrees
+.SH NOTES
+The default tapers are linear envelopes. To eliminate the
+taper, choose t1=t2=0.0.
+"swconst" is active only with nonlinear sweeps, i.e. when
+sweep=3,4,5.
+"tseg" and "fseg" arrays are used when only sweep=2
+Sweep is a modulated cosine function.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

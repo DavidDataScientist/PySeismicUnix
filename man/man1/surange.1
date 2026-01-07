@@ -1,0 +1,27 @@
+.TH SURANGE 1 "surange" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surange \- SURANGE - get max and min values for non-zero header entries surange <stdin
+.SH SYNOPSIS
+.B surange
+
+\fBsurange\fR <stdin
+.SH DESCRIPTION
+SURANGE - get max and min values for non-zero header entries surange <stdin
+.SH OPTIONAL PARAMETERS
+key=		Header key(s) to range (default=all)
+dim=0		dim seismic flag
+0 = not dim, 1 = coord in ft, 2 = coord in m
+.SH NOTES
+Output is:
+number of traces
+keyword min max (first - last)
+north-south-east-west limits of shot, receiver and midpoint
+if dim then also midpoint interval and line length
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

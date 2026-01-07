@@ -1,0 +1,30 @@
+.TH SEGYHDRMOD 1 "segyhdrmod" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+segyhdrmod \- SEGYHDRMOD - replace the text header on a SEGY file segyhdrmod text=file data=file
+.SH SYNOPSIS
+.B segyhdrmod
+
+[options]
+.SH DESCRIPTION
+SEGYHDRMOD - replace the text header on a SEGY file segyhdrmod text=file data=file
+.SH REQUIRED PARAMETERS
+text=      name of file containing new 3200 byte text header
+data=      name of file containing SEGY data set
+.SH NOTES
+This program simply does a replacement of the content of the first
+3200 bytes of the SEGY file with the contents of the file specified
+by the text= parameter. If the text header in the SEGY standard
+ebcdic format, the user will need to supply an ebcdic format file
+as the text=  as input file. A text file may be converted from
+ascii to ebcdic via:
+dd if=ascii_filename of=ebcdic_filename conv=ebcdic ibs=3200 count=1
+or from ebcdic to ascii via:
+dd if=ebcdic_filename of=ascii_filename ibs=3200 conv=ascii count=1
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

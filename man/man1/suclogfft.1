@@ -1,0 +1,49 @@
+.TH SUCLOGFFT 1 "suclogfft" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suclogfft \- SUCLOGFFT - fft real time traces to complex log frequency domain traces suclogftt <stdin >sdout sign=1
+.SH SYNOPSIS
+.B suclogfft
+
+suclogftt <stdin >sdout sign=1
+.SH DESCRIPTION
+SUCLOGFFT - fft real time traces to complex log frequency domain traces suclogftt <stdin >sdout sign=1
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+sign=1			sign in exponent of fft
+dt=from header		sampling interval
+verbose=1		=0 to stop advisory messages
+.... phase unwrapping options .....
+mode=suphase	simple jump detecting phase unwrapping
+=ouphase  Oppenheim's phase unwrapping
+unwrap=1       |dphase| > pi/unwrap constitutes a phase wrapping
+=0 no phase unwrapping	(in mode=suphase  only)
+trend=1	remove linear trend from the unwrapped phase
+zeromean=0     assume phase(0)=0.0, else assume phase is zero mean
+.SH EXAMPLES
+suclogfft < shotgather | suamp mode=real | sustack key=dt > real.su
+suclogfft < shotgather | suamp mode=imag | sustack key=dt > imag.su
+suop2 real.su imag.su op=zipper | suiclogfft | suminphase > wavelet.su
+.SH NOTES
+clogfft(F(t)) = log(FFT(F(t)) = log|F(omega)| + iphi(omega)
+where phi(omega) is the unwrapped phase. Note that 0< unwrap<= 1.0
+allows phase unwrapping to be tuned, if desired.
+To facilitate further processing, the sampling interval
+in frequency and first frequency (0) are set in the
+output header.
+suclogfft unwrap=0 | suiclogfft is not quite a no-op since the trace
+length will usually be longer due to fft padding.
+Caveats:
+No check is made that the data ARE real time traces!
+Output is type complex. To view amplitude, phase or real, imaginary
+parts, use    suamp
+PI/unwrap = minimum dphase is assumed to constitute a wrap in phase
+for suphase unwrapping only
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

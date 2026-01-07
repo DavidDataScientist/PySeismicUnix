@@ -1,0 +1,34 @@
+.TH SUREFCON 1 "surefcon" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surefcon \- SUREFCON -  Convolution of user-supplied Forward and Reverse refraction shots using XY trace offset in reverse shot surefcon <forshot sufile=revshot  xy=trace offseted  >stdout
+.SH SYNOPSIS
+.B surefcon
+
+\fBsurefcon\fR <forshot sufile=revshot  xy=trace offseted  >stdout
+.SH DESCRIPTION
+SUREFCON -  Convolution of user-supplied Forward and Reverse refraction shots using XY trace offset in reverse shot surefcon <forshot sufile=revshot  xy=trace offseted  >stdout
+.SH REQUIRED PARAMETERS
+sufile=	file containing SU trace to use as reverse shot
+xy=		Number of traces offseted from the 1st trace in sufile
+.SH OPTIONAL PARAMETERS
+none
+Trace header fields accessed: ns
+Trace header fields modified: ns
+.SH EXAMPLES
+surefcon <DATA sufile=DATA xy=1 | ...
+Here, the su data file, "DATA", convolved the nth trace by
+(n+xy)th trace in the same file
+.SH NOTES
+This code implements the Refraction Convolution Section (RCS)	method
+of generalized reciprocal refraction traveltime analysis developed by
+Derecke Palmer and Leoni Jones.
+The time sampling interval on the output traces is half of that on the
+traces in the input files.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,37 @@
+.TH SUADDSTATICS 1 "suaddstatics" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suaddstatics \- SUADDSTATICS - ADD random STATICS on seismic data
+.SH SYNOPSIS
+.B suaddstatics
+
+\fBsuaddstatics\fR required parameters [optional parameters] > stdout
+.SH DESCRIPTION
+SUADDSTATICS - ADD random STATICS on seismic data
+.SH REQUIRED PARAMETERS
+shift=		the static shift will be generated
+randomly in the interval [+shift,-shif] (ms)
+sources=		number of source locations
+receivers=		number of receiver locations
+cmps=			number of common mid point locations
+maxfold=		maximum fold of input data
+datafile=		name and COMPLETE path of the input file
+.SH OPTIONAL PARAMETERS
+dt=tr.dt			time sampling interval (ms)
+seed=getpid()		 seed for random number generator
+verbose=0			=1 print useful information
+.SH NOTES
+Input data should be sorted into cdp gathers.
+SUADDSTATICS applies static time shifts in a surface consistent way on
+seismic data sets. SUADDSTATICS writes the static time shifts in the
+header field TSTAT. To perform the actual shifts the user should use
+the program SUSTATIC after SUADDSTATICS. SUADDSTATICS outputs the
+corrupted data set to stdout.
+Header field used by SUADDSTATICS: cdp, sx, gx, tstat, dt.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,22 @@
+#!/bin/sh
+# Sushiftcsv_test1 - for program SUSHIFTCSV
+# Author: Andre Latour, Aug 2023
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Input fake traces, apply shift.                                        "
+  echo "---  In this test, the l2scrookred3 file has re-arranged columns.           "
+  echo "---  (Essentially, this is a pure programming test to make sure the         "
+  echo "---   order-of-columns in the q file does not affect the results).          "
+  echo "----------------------------------------------------------------------------"
+#
+# Note suchw does not honour scalco or scalel. So sdepth 120 means 12 for these headers.
+#
+  suchw <fake04.su >fake31.su key1=gelev,sdepth key2=selev,sdepth key3=selev,sdepth a=0,120
+#
+  sunszonecsv <fake31.su >fake32.su              locs=0 tpath=0 tapp=1 apply=1   \
+              qin=l2scrookred3.csv
+#
+  sugethw <fake32.su key=sx,sy,selev,sdepth,gx,gy,gelev,offset,sstat,gstat,tstat,sec
+#
+  suxwigb <fake32.su title=" after shifts " &
+#

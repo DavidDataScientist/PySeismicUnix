@@ -1,0 +1,44 @@
+.TH DT1TOSU 1 "dt1tosu" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+dt1tosu \- DT1TOSU - Convert ground-penetrating radar data in the Sensors & Software X
+.SH SYNOPSIS
+.B dt1tosu
+
+\fBdt1tosu\fR < gpr_data_in_dt1_format  > stdout
+.SH DESCRIPTION
+DT1TOSU - Convert ground-penetrating radar data in the Sensors & Software X.DT1 GPR format to SU format. dt1tosu < gpr_data_in_dt1_format  > stdout
+.SH OPTIONAL PARAMETERS
+ns=from header	number of samples per trace
+dt=.8		time sample interval (see below)
+swap=endian	endian is auto-determined =1 (big endian) swap
+=0 don't swap bytes (little endian machines)
+verbose=0	silent
+=1 S & S header values from first trace
+sent to outpar
+=2 S & S header values from all traces
+sent to outpar
+outpar=/dev/tty	output parameter file
+list=0	silent
+=1 list explaining labels used in verbose
+is printed to stderr
+Caution: An incorrect ns field will munge subsequent processing.
+.SH EXAMPLES
+fnyquist = 625 Hz	(apparent for su)
+IBM RS6000, NeXT, SUN are examples of big endian machines
+PC's and DEC are examples of little endian machines
+Caveat:
+This program has not been tested on DEC, some modification of the
+byte swapping routines may be required.
+.SH NOTES
+For compatiblity with SEGY header, apparent dt is set to
+.8 ms (800 microsecs).  Actual dt is .8 nanosecs.
+Using TRUE DISTANCES, this scales velocity
+and frequency by a factor of 1 million.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

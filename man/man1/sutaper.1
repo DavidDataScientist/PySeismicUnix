@@ -1,0 +1,33 @@
+.TH SUTAPER 1 "sutaper" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sutaper \- SUTAPER - Taper the edge traces of a data panel to zero
+.SH SYNOPSIS
+.B sutaper
+
+\fBsutaper\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUTAPER - Taper the edge traces of a data panel to zero.
+.SH OPTIONAL PARAMETERS
+ntr=tr.ntr	number of traces. If tr.ntr is not set, then
+ntr is mandatory
+tr1=0	 number of traces to be tapered at beginning
+tr2=tr1	number of traces to be tapered at end
+min=0.		minimum amplitude factor of taper
+tbeg=0		length of taper (ms) at trace start
+tend=0		length of taper (ms) at trace end
+taper=1	taper type
+=1 linear (default)
+=2 sine
+=3 cosine
+=4 gaussian (+/-3.8)
+=5 gaussian (+/-2.0)
+.SH NOTES
+To eliminate the taper, choose tbeg=0. and tend=0. and tr1=0
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

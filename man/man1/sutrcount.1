@@ -1,0 +1,26 @@
+.TH SUTRCOUNT 1 "sutrcount" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sutrcount \- SUTRCOUNT - SU program to count the TRaces in infile sutrcount < infile
+.SH SYNOPSIS
+.B sutrcount
+
+\fBsutrcount\fR < infile
+.SH DESCRIPTION
+SUTRCOUNT - SU program to count the TRaces in infile sutrcount < infile
+.SH REQUIRED PARAMETERS
+none
+Optional parameter:
+outpar=stdout
+.SH NOTES
+Once you have the value of ntr, you may set the ntr header field
+via:
+sushw key=ntr a=NTR < datain.su  > dataout.su
+Where NTR is the value of the count obtained with sutrcount
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,23 @@
+.TH SUSWAPBYTES 1 "suswapbytes" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suswapbytes \- SUSWAPBYTES - SWAP the BYTES in SU data to convert data from big endian to little endian byte order, and vice versa
+.SH SYNOPSIS
+.B suswapbytes
+
+\fBsuswapbytes\fR < stdin [optional parameter] > sdtout
+.SH DESCRIPTION
+SUSWAPBYTES - SWAP the BYTES in SU data to convert data from big endian to little endian byte order, and vice versa
+.SH EXAMPLES
+Caveat: this code has not been tested on DEC
+.SH NOTES
+The 'native'	endian is the endian (byte order) of the machine you are
+running this program on. The 'foreign' endian is the opposite byte order.
+Examples of big endian machines are: IBM RS6000, SUN, NeXT
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

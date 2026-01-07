@@ -1,0 +1,12 @@
+#!/bin/sh
+# Sunszonecsv_SPS_Stocsv - for program SUNSZONECSV
+# Author: Andre Latour, Aug 2024
+#
+  echo "----------------------------------------------------------------------------"
+  echo "---  Use sutoolcsv to convert SPS2 S text file to csv q file.               "
+  echo "---  I then used libreOffice Calc spreadsheet to produce the l2scrookred    "
+  echo "---  files containing near surface thicknesses and velocities for tests.    "
+  echo "----------------------------------------------------------------------------"
+#
+  sutoolcsv rfile=l2scrook.txt setid=s outid=q match=sps2 forms=sps2 names=sps2 wfile=l2scrook.csv
+#

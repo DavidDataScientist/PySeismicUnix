@@ -1,0 +1,59 @@
+# supad
+
+SUPAD - Pad zero traces
+
+## Synopsis
+
+```bash
+supad <stdin >stdout min= max= [optional parameters]
+```
+
+## Required Parameters
+
+min=			trace key start
+max=			trace key end
+
+## Optional Parameters
+
+key1=ep		panel key
+key2=tracf		trace key
+key3=trid		flag key
+val3=2		value assigned to padded traces
+d=1			trace key spacing
+
+## Examples
+
+```
+suplane | supad min=1 max=40 key1=offset key2=tracr | ...
+... appends eight empty traces.
+suplane | supad min=1 max=32 key1=offset key2=tracr d=0.5 | ...
+... inserts a zero trace after each trace (even though the
+header tracr is integer and cannot properly store the floats)
+suplane | supad min=1 max=32 | ...
+... produces an error because the panel and trace key are all 0.
+```
+
+## Notes
+
+In contrast to most SU codes, supad recognizes panels, or ensembles.
+If the input consists of several panels, each panel will be padded
+individually.
+key1 and key2 are the primary and secondary sort key of the data set.
+The sort order of key1 does not matter at all.
+The sort order of key2 must be monotonous - if key2 is descending,
+supply a negative value for the spacing d.
+Traces with a key2-value outside the min/max range will be lost.
+Traces with a key2-value that is not a multiple of the spacing from
+the min-value (the max-value, if the spacing is negative) will
+not be lost. Instead, they will shift the series of key2-values.
+By default the dead trace flag will be raised for the padded traces.
+This should make it easy to remove the zero traces later on, if need be.
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

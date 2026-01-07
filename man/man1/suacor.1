@@ -1,0 +1,22 @@
+.TH SUACOR 1 "suacor" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suacor \- SUACOR - auto-correlation
+.SH SYNOPSIS
+.B suacor
+
+\fBsuacor\fR <stdin >stdout [optional parms]
+.SH DESCRIPTION
+SUACOR - auto-correlation
+.SH OPTIONAL PARAMETERS
+ntout=101	odd number of time samples output
+norm=1	if non-zero, normalize maximum absolute output to 1
+sym=1		if non-zero, produce a symmetric output from
+lag -(ntout-1)/2 to lag +(ntout-1)/2
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

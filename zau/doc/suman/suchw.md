@@ -1,0 +1,55 @@
+# suchw
+
+SUCHW - Change Header Word using one or two header word fields
+
+## Synopsis
+
+```bash
+suchw <stdin >stdout [optional parameters]
+```
+
+## Required Parameters
+
+none
+
+## Optional Parameters
+
+key1=cdp,...	output key(s)
+key2=cdp,...	input key(s)
+key3=cdp,...	input key(s)
+a=0,...		overall shift(s)
+b=1,...		scale(s) on first input key(s)
+c=0,...		scale on second input key(s)
+d=1,...		overall scale(s)
+e=1,...		exponent on first input key(s)
+f=1,...		exponent on second input key(s)
+The value of header word key1 is computed from the values of
+key2 and key3 by:
+val(key1) = (a + b * val(key2)^e + c * val(key3)^f) / d
+
+## Examples
+
+```
+Shift cdp numbers by -1:
+suchw <data >outdata a=-1
+Add 1000 to tracr value:
+suchw key1=tracr key2=tracr a=1000 <infile >outfile
+We set the receiver point (gx) field by summing the offset
+and shot point (sx) fields and then we set the cdp field by
+averaging the sx and gx fields (we choose to use the actual
+locations for the cdp fields instead of the conventional
+1, 2, 3, ... enumeration):
+suchw <indata key1=gx key2=offset key3=sx b=1 c=1 |
+suchw key1=cdp key2=gx key3=sx b=1 c=1 d=2 >outdata
+Do both operations in one call:
+suchw<indata key1=gx,cdp key2=offset,gx key3=sx,sx b=1,1 c=1,1 d=1,2 >outdata
+```
+
+## See Also
+
+- [su](su.md)
+- [segyread](segyread.md)
+- [segywrite](segywrite.md)
+
+---
+*Generated from CWP/SU Windows port*

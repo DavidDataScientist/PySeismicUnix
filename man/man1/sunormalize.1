@@ -1,0 +1,29 @@
+.TH SUNORMALIZE 1 "sunormalize" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sunormalize \- SUNORMALIZE - Trace NORMALIZation by rms, max, or median or median balancing sunormalize <stdin >stdout t0=0 t1=TMAX norm=rms
+.SH SYNOPSIS
+.B sunormalize
+
+\fBsunormalize\fR <stdin >stdout t0=0 t1=TMAX norm=rms
+.SH DESCRIPTION
+SUNORMALIZE - Trace NORMALIZation by rms, max, or median or median balancing sunormalize <stdin >stdout t0=0 t1=TMAX norm=rms
+.SH REQUIRED PARAMETERS
+dt=tr.dt    if not set in header, dt is mandatory
+ns=tr.ns    if not set in header, ns is mandatory
+.SH OPTIONAL PARAMETERS
+norm=rms    type of norm rms, max, med , balmed
+t0=0.0      startimg time for window
+t1=TMAX     ending time for window
+.SH NOTES
+Traces are divided by either the root mean squared amplitude,
+trace maximum, or the median value. The option "balmed" is
+median balancing which is a shift of the amplitudes by the
+median value of the amplitudes.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,26 @@
+.TH SUTVBAND 1 "sutvband" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sutvband \- SUTVBAND - time-variant bandpass filter (sine-squared taper) sutvband <stdin >stdout tf= f=
+.SH SYNOPSIS
+.B sutvband
+
+\fBsutvband\fR <stdin >stdout tf= f=
+.SH DESCRIPTION
+SUTVBAND - time-variant bandpass filter (sine-squared taper) sutvband <stdin >stdout tf= f=
+.SH REQUIRED PARAMETERS
+dt = (from header)      time sampling interval (sec)
+tf=             times for which f-vector is specified
+f=f1,f2,f3,f4   Corner frequencies corresponding to the
+times in tf. Specify as many f= as
+there are entries in tf.
+The filters are applied in frequency domain.
+.SH EXAMPLES
+sutvband <data tf=.2,1.5 f=10,12.5,40,50 f=10,12.5,30,40 | ...
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

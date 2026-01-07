@@ -1,0 +1,26 @@
+.TH SUMIXGATHERS 1 "sumixgathers" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sumixgathers \- SUMIXGATHERS - mix two gathers
+.SH SYNOPSIS
+.B sumixgathers
+
+\fBsumixgathers\fR file1 file2 > stdout [optional parameters]
+.SH DESCRIPTION
+SUMIXGATHERS - mix two gathers
+.SH REQUIRED PARAMETERS
+ntr=tr.ntr	if ntr header field is not set, then ntr is mandatory
+.SH NOTES
+Mixes two gathers keeping only the traces of the first file
+if the offset is the same. The purpose is to substitute only
+traces non existing in file1 by traces interpolated store in file2.
+Example. If file1 is original data file and file 2 is obtained by
+resampling with Radon transform, then the output contains original
+traces with gaps filled
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

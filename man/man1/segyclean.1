@@ -1,0 +1,19 @@
+.TH SEGYCLEAN 1 "segyclean" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+segyclean \- SEGYCLEAN - zero out unassigned portion of header segyclean <stdin >stdout Since "foreign" SEG-Y tapes may use the unassigned portion
+.SH SYNOPSIS
+.B segyclean
+
+\fBsegyclean\fR <stdin >stdout
+.SH DESCRIPTION
+SEGYCLEAN - zero out unassigned portion of header segyclean <stdin >stdout Since "foreign" SEG-Y tapes may use the unassigned portion
+.SH EXAMPLES
+segyread trmax=200 | segyclean | suximage
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

@@ -1,0 +1,20 @@
+.TH SURECMO 1 "surecmo" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surecmo \- SURECMO - compensate for the continuously moving streamer in marine seismic acquisition (assume far offset is first channel) right now valid for data where tmax < 2*dx/vb
+.SH SYNOPSIS
+.B surecmo
+
+right now valid for data where tmax < 2*dx/vb
+.SH DESCRIPTION
+SURECMO - compensate for the continuously moving streamer in marine seismic acquisition (assume far offset is first channel) right now valid for data where tmax < 2*dx/vb
+.SH EXAMPLES
+surecmo <stdin >sdout vb=2.5 dt=25 dt=4000
+(valid for tmax < 20s)
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

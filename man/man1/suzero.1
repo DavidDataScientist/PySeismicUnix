@@ -1,0 +1,23 @@
+.TH SUZERO 1 "suzero" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suzero \- SUZERO -- zero-out (or set constant) data within a time window suzero itmax= < indata > outdata
+.SH SYNOPSIS
+.B suzero
+
+\fBsuzero\fR itmax= < indata > outdata
+.SH DESCRIPTION
+SUZERO -- zero-out (or set constant) data within a time window suzero itmax= < indata > outdata
+.SH REQUIRED PARAMETERS
+itmax=		last time sample to zero out
+.SH OPTIONAL PARAMETERS
+itmin=0		first time sample to zero out
+value=0		value to set
+See also: sukill, sumute
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

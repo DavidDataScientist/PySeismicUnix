@@ -1,0 +1,31 @@
+.TH SUSEHW 1 "susehw" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+susehw \- SUSEHW - Set the value the Header Word denoting trace number within an Ensemble defined by the value of another header word susehw <stdin >stdout [options]
+.SH SYNOPSIS
+.B susehw
+
+\fBsusehw\fR <stdin >stdout [options]
+.SH DESCRIPTION
+SUSEHW - Set the value the Header Word denoting trace number within an Ensemble defined by the value of another header word susehw <stdin >stdout [options]
+.SH REQUIRED PARAMETERS
+none
+.SH OPTIONAL PARAMETERS
+key1=cdp	Key header word defining the ensemble
+key2=cdpt	Key header word defining the count within the ensemble
+a=1		starting value of the count in the ensemble
+b=1		increment or decrement within the ensemble
+.SH EXAMPLES
+susehw < cdpgathers.su a=1 b=1 key1=cdp key2=cdpt > new.su
+.SH NOTES
+This code was written because suresstat requires cdpt to be set.
+The computation is
+val(key2) = a + b*i
+The input data must first be sorted into constant key1 gathers.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

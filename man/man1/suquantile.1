@@ -1,0 +1,27 @@
+.TH SUQUANTILE 1 "suquantile" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+suquantile \- SUQUANTILE - display some quantiles or ranks of a data set
+.SH SYNOPSIS
+.B suquantile
+
+\fBsuquantile\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUQUANTILE - display some quantiles or ranks of a data set
+.SH REQUIRED PARAMETERS
+none (no-op)
+.SH OPTIONAL PARAMETERS
+panel=1		flag; 0 = do trace by trace (vs. whole data set)
+quantiles=1	flag; 0 = give ranks instead of quantiles
+verbose=0	verbose = 1 echoes information
+tmpdir= 	 if non-empty, use the value as a directory path
+prefix for storing temporary files; else if the
+the CWP_TMPDIR environment variable is set use
+its value for the path; else use tmpfile()
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

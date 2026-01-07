@@ -1,0 +1,25 @@
+.TH SUKILL 1 "sukill" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+sukill \- SUKILL - zero out traces
+.SH SYNOPSIS
+.B sukill
+
+\fBsukill\fR <stdin >stdout [optional parameters]
+.SH DESCRIPTION
+SUKILL - zero out traces
+.SH OPTIONAL PARAMETERS
+key=trid	header name to select traces to kill
+a=2		header value identifying tracces to kill
+or
+min= 		first trace to kill (one-based)
+count=1		number of traces to kill
+.SH NOTES
+If min= is set it overrides selecting traces by header.
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

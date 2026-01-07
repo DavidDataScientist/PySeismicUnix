@@ -1,0 +1,26 @@
+.TH SURANDSPIKE 1 "surandspike" "CWP/SU" "Seismic Unix Manual"
+.SH NAME
+surandspike \- SURANDSPIKE - make a small data set of RANDom SPIKEs
+.SH SYNOPSIS
+.B surandspike
+
+\fBsurandspike\fR [optional parameters] > out_data_file
+.SH DESCRIPTION
+SURANDSPIKE - make a small data set of RANDom SPIKEs
+.SH OPTIONAL PARAMETERS
+n1=500 			number of time samples
+n2=200			number of traces
+dt=0.002 		time sampling interval in seconds
+nspk=20			number of spikes per trace
+amax=0.2		abs(max) spike value
+mode=1			different spikes on each trace
+=2 same spikes on each trace
+seed=from_clock    	random number seed (integer)
+.SH SEE ALSO
+.BR su (1),
+.BR segyread (1),
+.BR segywrite (1)
+.SH AUTHOR
+Colorado School of Mines, Center for Wave Phenomena
+.SH COPYRIGHT
+Copyright (c) Colorado School of Mines

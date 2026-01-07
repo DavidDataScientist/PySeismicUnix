@@ -1,0 +1,6 @@
+# Miscellaneous rules
+# This file defines miscellaneous variables used across Makefiles
+# Windows-compatible (no Unix-specific commands)
+
+D = 
+

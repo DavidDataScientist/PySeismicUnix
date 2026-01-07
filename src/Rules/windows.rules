@@ -1,0 +1,47 @@
+# Windows-specific rules for GNU Make
+# This file provides Windows command equivalents for Unix commands
+# Used when building on Windows with GNU Make
+
+# Windows command substitutions
+# These can be used in Makefiles to replace Unix commands
+
+# Remove file(s) - Windows version
+# Usage: $(call RM,file) or $(call RM,*.o)
+RM = if exist $(1) del /F /Q $(1) 2>nul || true
+
+# Touch file - Windows version
+# Usage: $(call TOUCH,file)
+TOUCH = echo. > $(1) 2>nul || type nul > $(1)
+
+# Copy file - Windows version
+# Usage: $(call CP,source,dest)
+CP = copy $(1) $(2)
+
+# Move file - Windows version
+# Usage: $(call MV,source,dest)
+MV = move $(1) $(2)
+
+# Make directory - Windows version (creates parents if needed)
+# Usage: $(call MKDIR,dir)
+MKDIR = if not exist $(1) mkdir $(1)
+
+# Remove directory - Windows version
+# Usage: $(call RMDIR,dir)
+RMDIR = if exist $(1) rmdir /S /Q $(1)
+
+# Remove file(s) with wildcards - Windows version
+# Usage: $(call RMWILD,pattern)
+RMWILD = for %%f in ($(1)) do if exist %%f del /F /Q %%f 2>nul
+
+# Test if file exists - Windows version
+# Usage: $(call TEST,file)
+TEST = if exist $(1)
+
+# Note: These functions use $(call ...) syntax in GNU Make
+# For direct use in recipes, use the Windows commands directly:
+#   -if exist file del /F /Q file
+#   echo. > file
+#   copy source dest
+#   move source dest
+#   if not exist dir mkdir dir
+
